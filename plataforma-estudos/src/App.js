@@ -1,13 +1,16 @@
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 import Form from './form/Formu';
 
 function App() {
   return (
-    <div className="App">
-      <h1>StudyHub</h1>
-      <h1>Olá! seja bem vindo a plataforma de studos! </h1>
-      <Form/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <h1>StudyHub</h1>
+        <h1>Olá! Seja bem-vindo à plataforma de estudos!</h1>
+        <Form />
+      </div>
+    </BrowserRouter>
   );
 }
 

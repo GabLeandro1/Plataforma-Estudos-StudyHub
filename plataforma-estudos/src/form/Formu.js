@@ -1,8 +1,44 @@
 import styles from '../components/Form.module.css' 
+import { useNavigate } from "react-router-dom";
+import { useState } from 'react'
 
 function Form() {
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
+    const [erro, setErro] = useState("");
+    const navigate = useNavigate();
+
+    const validarUsuario = async (e) => {
+        e.preventDefault()
+        setErro("");
+        try {
+            const resposta = await fetch("http://localhost:3000/alunos/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, senha }),
+            })
+
+            if (!resposta.ok) {
+                throw new Error("Falha no login");
+            }
+
+            const dados = await resposta.json();
+
+            if (dados.token) {
+                localStorage.setItem("token", dados.token);
+                localStorage.setItem("dados", JSON.stringify(dados.aluno));
+                sessionStorage.removeItem("saudacaoExibida");
+                navigate("/menu/aluno");
+            } else {
+                setErro("Token não recebido.");
+            }
+        } catch (err) {
+            setErro("Matrícula ou senha inválidos.");
+        }
+    }
+
     return (
-        <form className={styles.formularioInicioTopo}>
+        <form className={styles.formularioInicioTopo} onSubmit={validarUsuario}>
             <label for="email">E-mail</label>
             <input 
                 type="email" 
@@ -10,6 +46,7 @@ function Form() {
                 name="email" 
                 autocomplete="username" 
                 placeholder="seu@email.com" 
+                onChange={(e) => setEmail(e.target.value)}
                 required 
             />
             <label for="senha">Senha</label>
@@ -19,6 +56,7 @@ function Form() {
                 name="senha" 
                 autocomplete="current-password" 
                 placeholder="Digite sua senha" 
+                onChange={(e) => setSenha(e.target.value)}
                 required 
             />
             <button type="submit">Entrar</button>
@@ -26,6 +64,7 @@ function Form() {
                 <b><a href=''>Não tem uma conta?</a></b>
                 <b><a href=''>Esqueceu a senha?</a></b>
             </div>
+            {erro && <p className="text-red-500 text-sm">{erro}</p>}
         </form>
     )
 }
