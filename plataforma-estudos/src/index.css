@@ -1,0 +1,26 @@
+* {
+    font-family: Inter;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  /* Define o degradê na diagonal (-45 graus) com 4 cores */
+  background: linear-gradient(-45deg, #440ab1, #035497, #1d681d, #7700ff);
+  /* Aumenta o tamanho do fundo para permitir o movimento */
+  background-size: 400% 400%;
+  /* Aplica a animação infinita de 15 segundos */
+  animation: mudarCorDiagonal 15s ease infinite;
+}
+
+@keyframes mudarCorDiagonal {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
