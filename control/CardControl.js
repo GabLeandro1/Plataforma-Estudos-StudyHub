@@ -48,6 +48,8 @@ module.exports = class CardControl {
     }
 
     async update(req, res) {
+        card.id_card = req.params.id_card;
+
         const { id_aluno, id_categoria, pergunta, resposta } = req.body.card;
 
         const card = new Card();

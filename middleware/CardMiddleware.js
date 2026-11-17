@@ -1,4 +1,4 @@
-module.exports = class CategoriaMiddleware {
+module.exports = class CardMiddleware {
   async validarCamposObrigatorios(req, res, next) {
     const card = req.body.card;
 

@@ -1,7 +1,7 @@
-const Categorias = require('../model/Categorias');
+const Categoria = require('../model/Categoria');
 const JWTMiddleware = require('../middleware/JWTMiddleware');  // Importando o middleware de validação de token
 
-module.exports = class CategoriasControl {
+module.exports = class CategoriaControl {
   
   async readAll(req, res) {
     try {
@@ -9,7 +9,7 @@ module.exports = class CategoriasControl {
       const jwtMiddleware = new JWTMiddleware();
       await jwtMiddleware.validate(req, res, () => {});  // Validando o token diretamente
 
-      const categoria = new Categorias();
+      const categoria = new Categoria();
       const categorias = await categoria.readAll();
 
       return res.status(200).json({ cod: 1, status: true, categorias });
@@ -24,7 +24,7 @@ module.exports = class CategoriasControl {
       const jwtMiddleware = new JWTMiddleware();
       await jwtMiddleware.validate(req, res, () => {});  // Validando o token diretamente
 
-      const categoria = new Categorias();
+      const categoria = new Categoria();
       categoria.id_categoria = req.params.id_categoria;
 
       const dados = await categoria.readByIdCategoria();
@@ -40,7 +40,7 @@ module.exports = class CategoriasControl {
       const jwtMiddleware = new JWTMiddleware();
       await jwtMiddleware.validate(req, res, () => {});  // Validando o token diretamente
 
-      const categoria = new Categorias();
+      const categoria = new Categoria();
       categoria.id_categoria_pai = req.params.id_categoria_pai;
 
       const dados = await categoria.readByIdCategoriaPai();
@@ -57,7 +57,7 @@ module.exports = class CategoriasControl {
       const jwtMiddleware = new JWTMiddleware();
       await jwtMiddleware.validate(req, res, () => {});  // Validando o token diretamente
 
-      const categoria = new Categorias();
+      const categoria = new Categoria();
       categoria.id_aluno = req.params.id_aluno;
 
       const dados = await categoria.readByID();
@@ -76,7 +76,7 @@ module.exports = class CategoriasControl {
 
       const { nome, id_categoria, id_aluno, id_categoria_pai } = req.body.categoria || req.body;
 
-      const categoria = new Categorias();
+      const categoria = new Categoria();
       categoria.nome = nome;
       categoria.id_categoria = id_categoria;
       categoria.id_aluno = id_aluno;
@@ -101,11 +101,12 @@ module.exports = class CategoriasControl {
       const jwtMiddleware = new JWTMiddleware();
       await jwtMiddleware.validate(req, res, () => {});  // Validando o token diretamente
 
-      const { nome, id_categoria, id_aluno, id_categoria_pai } = req.body.categoria || req.body;
+      categoria.id_categoria = req.params.id_categoria
 
-      const categoria = new Categorias();
+      const { nome, id_aluno, id_categoria_pai } = req.body.categoria || req.body;
+
+      const categoria = new Categoria();
       categoria.nome = nome;
-      categoria.id_categoria = id_categoria;
       categoria.id_aluno = id_aluno;
       categoria.id_categoria_pai = id_categoria_pai;
 
@@ -127,7 +128,7 @@ module.exports = class CategoriasControl {
       const jwtMiddleware = new JWTMiddleware();
       await jwtMiddleware.validate(req, res, () => {});  // Validando o token diretamente
 
-      const categoria = new Categorias();
+      const categoria = new Categoria();
       categoria.id_categoria = req.params.id_categoria;
 
       const excluido = await categoria.delete();
