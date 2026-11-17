@@ -14,7 +14,7 @@ module.exports = class AlunoRouter {
       this._ctrl.login(req, res)
     );
 
-    this._router.post('/', this._jwt.validate, (req, res) =>
+    this._router.post('/', (req, res) =>
       this._ctrl.create(req, res)
     );
 

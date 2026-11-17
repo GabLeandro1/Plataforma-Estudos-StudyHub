@@ -2,7 +2,7 @@ import styles from '../components/Form.module.css';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 
-function Form() {
+function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [erro, setErro] = useState("");
@@ -67,11 +67,11 @@ function Form() {
             <button type="submit">Entrar</button>
 
             <div className={styles.formularioInicioBaixo}>
-                <b><a href="">Não tem uma conta?</a></b>
-                <b><a href="">Esqueceu a senha?</a></b>
+                <b><a onClick={() => navigate('/cadastro')}>Não tem uma conta?</a></b>
+                <b><a button onClick={() => navigate('/recuperar-senha')}>Esqueceu a senha?</a></b>
             </div>
         </form>
     );
 }
 
-export default Form;
+export default Login;

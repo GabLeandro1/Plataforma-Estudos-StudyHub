@@ -1,15 +1,24 @@
 import './App.css';
-import { BrowserRouter } from 'react-router-dom';
-import Form from './form/Formu';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Login from './pages/Home';
+import Cadastro from './pages/Cadastro';
+import RecuperarSenha from './pages/RecuperarSenha';
+import MenuAluno from './pages/MenuAluno';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <h1>StudyHub</h1>
-        <h1>Olá! Seja bem-vindo à plataforma de estudos!</h1>
-        <Form />
-      </div>
+      <Routes>
+        <Route path="/" element={<Login />} />
+
+        <Route path="/cadastro" element={<Cadastro />} />
+
+        <Route path="/recuperar-senha" element={<RecuperarSenha />} />
+
+        <Route path="/menu/aluno" element={<MenuAluno />} />
+      </Routes>
     </BrowserRouter>
   );
 }

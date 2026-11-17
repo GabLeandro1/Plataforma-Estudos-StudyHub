@@ -1,3 +1,7 @@
+* {
+  text-align: center;
+}
+
 .formularioInicioTopo {
     background-color: rgb(39, 76, 124);
     border: 1px solid #111;
@@ -43,4 +47,12 @@
 
 .error {
     color: rgb(141, 25, 25)
+}
+
+h1 {
+    color: white;
+}
+
+a {
+    cursor: pointer;
 }
