@@ -40,3 +40,7 @@
     color: rgb(24, 101, 201);
     text-align: center;
 }
+
+.error {
+    color: rgb(141, 25, 25)
+}

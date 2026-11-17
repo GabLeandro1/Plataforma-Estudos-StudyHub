@@ -65,7 +65,7 @@ class Aluno {
   async autenticar() {
     const con = await Banco.getConexao();
     try {
-      const [rows] = await con.execute("SELECT COUNT(*) AS qtd FROM alunos WHERE Email = ? AND Senha_Aluno = ?", [this._email, this._senha]);
+      const [rows] = await con.execute("SELECT COUNT(*) AS qtd FROM alunos WHERE email = ? AND senha = ?", [this._email, this._senha]);
       return rows[0].qtd > 0;
     } catch (err) {
       console.error("Erro na autenticação:", err);

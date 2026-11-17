@@ -4,7 +4,7 @@ class Banco {
     static HOST = '127.0.0.1';
     static USER = 'root';
     static PWD = '';
-    static DB = 'banco_tcc';
+    static DB = 'studyhub';
     static PORT = 3306;
     static CONEXAO = null;
 
