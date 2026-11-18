@@ -4,8 +4,9 @@ import { useState } from 'react'
 import Container from '../layout/Container'
 import { Link } from 'react-router-dom'
 import logo from "../img/logo.png"
+import ButtonLogout from "../layout/LogoutButton"
 
-function NavBar() {
+function NavBar({ setLogado }) {
  return (
        <nav class={styles.navbar}>
             <Container customClass="min-height">
@@ -26,6 +27,7 @@ function NavBar() {
                         <Link to="/menu/aluno/configuracoes">Configurações</Link>
                     </li>
                 </ul>
+                <ButtonLogout setLogado={setLogado}/>
             </Container>
        </nav>
     );

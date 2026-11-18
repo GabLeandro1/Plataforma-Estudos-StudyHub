@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+.App.logado {
+  min-height: 100vh;
+  background: linear-gradient(
+    -45deg,
+    #282c34,
+    #040011,
+    #164e63,
+    #282c34
+  );
+  background-size: 400% 400%;
+  animation: mudarCores 10s ease infinite;
+  color: white;
+}
+
+@keyframes mudarCores {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

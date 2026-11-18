@@ -2,7 +2,7 @@ import Login from '../components/Login';
 import styles from './Home.module.css';
 import logo from "../img/logo.png"
 
-function Home() {
+function Home({ setLogado }) {
     return (
         <main className={styles.home}>
             <header className={styles.cabecalho}>
@@ -14,7 +14,7 @@ function Home() {
                 <span>Seu espaço para aprender e evoluir.</span>
             </header>
 
-            <Login />
+            <Login setLogado={setLogado}/>
         </main>
     );
 }

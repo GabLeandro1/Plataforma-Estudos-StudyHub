@@ -1,6 +1,7 @@
 
 import styles from './CronometroProgressivo.module.css';
 import { useState, useRef } from 'react';
+import ButtonGoBack from '../layout/ButtonGoBack'
 
 function CronometroProgressivo() {
     const [segundos, setSegundos] = useState(0);
@@ -55,6 +56,7 @@ function CronometroProgressivo() {
 
     return (
         <section className={styles.campo_hora}>
+            <ButtonGoBack/>
             <h1>Tempo decorrido</h1>
             <h1 className={styles.visor}>{visor}</h1>
             <nav>

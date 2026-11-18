@@ -1,5 +1,6 @@
 import styles from './Pomodoro.module.css';
 import { useState, useRef } from 'react';
+import ButtonGoBack from '../layout/ButtonGoBack'
 
 function Pomodoro() {
     // Configurações do Pomodoro
@@ -13,7 +14,6 @@ function Pomodoro() {
     const [estudoRestante, setEstudoRestante] = useState(0);
     const [ativo, setAtivo] = useState(false);
     const [finalizado, setFinalizado] = useState(false);
-
     const intervalo = useRef(null);
 
     // Guarda os valores atuais do cronômetro
@@ -25,7 +25,7 @@ function Pomodoro() {
 
     return (
         <section className={styles.campo_hora}>
-
+            <ButtonGoBack/>
             <h1>Configure seu Pomodoro</h1>
 
             <label htmlFor="tempoTotal">

@@ -13,99 +13,103 @@ import Pomodoro from './pages/Pomodoro'
 import CronometroProgressivo from './pages/CronometroProgressivo'
 import CronometroRegressivo from './pages/CronometroRegressivo'
 import Flashcards from './pages/Flashcards'
+import { useState } from 'react'
 
 
 function App() {
+  const [logado, setLogado] = useState(localStorage.getItem("token") ? true : false);
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
+      <div className={logado ? "App logado" : "App"}>
+        <Routes>
+          <Route path="/" element={<Login setLogado={setLogado}/>} />
 
-        <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/cadastro" element={<Cadastro />} />
 
-        <Route path="/recuperar-senha" element={<RecuperarSenha />} />
+          <Route path="/recuperar-senha" element={<RecuperarSenha />} />
 
-        <Route
-          path="/menu/aluno"
-          element={
-            <>
-              <NavBar />
-              <MenuCronometroAluno />
-            </>
-          }
-        />
+          <Route
+            path="/menu/aluno"
+            element={
+              <>
+                <NavBar setLogado={setLogado}/>
+                <MenuCronometroAluno />
+              </>
+            }
+          />
 
-        <Route
-          path="/menu/aluno/cronometro"
-          element={
-            <>
-              <NavBar />
-              <MenuCronometroAluno />
-            </>
-          }
-        />
+          <Route
+            path="/menu/aluno/cronometro"
+            element={
+              <>
+                <NavBar setLogado={setLogado}/>
+                <MenuCronometroAluno />
+              </>
+            }
+          />
 
-        <Route
-          path="/menu/aluno/flashcards"
-          element={
-            <>
-              <NavBar />
-              <Flashcards />
-            </>
-          }
-        />
+          <Route
+            path="/menu/aluno/flashcards"
+            element={
+              <>
+                <NavBar setLogado={setLogado}/>
+                <Flashcards />
+              </>
+            }
+          />
 
-        <Route
-          path="/menu/aluno/historico"
-          element={
-            <>
-              <NavBar />
-              <MenuCronometroAluno />
-            </>
-          }
-        />
+          <Route
+            path="/menu/aluno/historico"
+            element={
+              <>
+                <NavBar setLogado={setLogado}/>
+                <MenuCronometroAluno />
+              </>
+            }
+          />
 
-        <Route
-          path="/menu/aluno/configuracoes"
-          element={
-            <>
-              <NavBar />
-              <MenuCronometroAluno />
-            </>
-          }
-        />
+          <Route
+            path="/menu/aluno/configuracoes"
+            element={
+              <>
+                <NavBar setLogado={setLogado}/>
+                <MenuCronometroAluno />
+              </>
+            }
+          />
 
-        <Route
-          path="/menu/aluno/cronometro/pomodoro"
-          element={
-            <>
-              <NavBar />
-              <Pomodoro />
-            </>
-          }
-        />
+          <Route
+            path="/menu/aluno/cronometro/pomodoro"
+            element={
+              <>
+                <NavBar setLogado={setLogado}/>
+                <Pomodoro />
+              </>
+            }
+          />
 
-        <Route
-          path="/menu/aluno/cronometro/cronometro-regressivo"
-          element={
-            <>
-              <NavBar />
-              <CronometroRegressivo />
-            </>
-          }
-        />
+          <Route
+            path="/menu/aluno/cronometro/cronometro-regressivo"
+            element={
+              <>
+                <NavBar setLogado={setLogado}/>
+                <CronometroRegressivo />
+              </>
+            }
+          />
 
-        <Route
-          path="/menu/aluno/cronometro/cronometro-progressivo"
-          element={
-            <>
-              <NavBar />
-              <CronometroProgressivo />
-            </>
-          }
-        />
+          <Route
+            path="/menu/aluno/cronometro/cronometro-progressivo"
+            element={
+              <>
+                <NavBar setLogado={setLogado}/>
+                <CronometroProgressivo />
+              </>
+            }
+          />
 
-      </Routes>
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

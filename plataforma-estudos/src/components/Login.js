@@ -2,7 +2,9 @@ import styles from '../components/Form.module.css';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 
-function Login() {
+function Login({ setLogado }) {
+    console.log("setLogado:", setLogado);
+    console.log("Tipo:", typeof setLogado);
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [erro, setErro] = useState("");
@@ -28,6 +30,7 @@ function Login() {
             if (dados.token) {
                 localStorage.setItem("token", dados.token);
                 localStorage.setItem("dados", JSON.stringify(dados.aluno));
+                setLogado(true);
                 navigate("/menu/aluno");
             } else {
                 setErro("Token não recebido.");

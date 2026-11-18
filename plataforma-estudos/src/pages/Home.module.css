@@ -47,36 +47,6 @@
     gap: 12px;
 }
 
-
-.buttonGoBack {
-    position: absolute;
-    top: 10px;
-    left: 15px;
-
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 0;
-    border: none;
-    border-radius: 50%;
-
-    background-color: #ffffff;
-    color: #000000;
-    font-size: 22px;
-
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-.buttonGoBack:hover {
-    background-color: #919192;
-    transform: translateX(-3px);
-}
-
 @media (max-width: 480px) {
     .cabecalho h1 {
         font-size: 30px;

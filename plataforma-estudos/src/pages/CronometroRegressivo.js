@@ -1,6 +1,7 @@
 
 import styles from './CronometroRegressivo.module.css';
 import { useState, useRef } from 'react';
+import ButtonGoBack from '../layout/ButtonGoBack'
 
 function CronometroRegressivo() {
     const [segundos, setSegundos] = useState(0);
@@ -98,6 +99,7 @@ function CronometroRegressivo() {
 
     return (
         <section className={styles.campo_hora}>
+            <ButtonGoBack/>
             <h1>Digite o valor inicial de hora</h1>
 
             <input
