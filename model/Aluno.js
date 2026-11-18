@@ -62,6 +62,17 @@ class Aluno {
     }
   }
 
+  async readByEmailSenha() {
+    const con = await Banco.getConexao();
+    try {
+      const [rows] = await con.execute("SELECT * FROM alunos WHERE email = ? AND senha = ?", [this._email, this._senha]);
+      return rows[0] || null;
+    } catch (err) {
+      console.error("Erro ao buscar aluno:", err);
+      return null;
+    }
+  }
+
   async autenticar() {
     const con = await Banco.getConexao();
     try {

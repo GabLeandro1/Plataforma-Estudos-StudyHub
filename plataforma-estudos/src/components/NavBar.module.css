@@ -16,16 +16,26 @@
 }
 
 .item a {
+    display: inline-block;
     color: #fff;
     text-decoration: none;
 
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .item a:hover {
     color: #ffbb33;
+    transform: translateY(-7px) scale(1.04);
 }
 
 .img {
-  width: 100px;
-  height: 70px;
+    width: 100px;
+    height: 70px;
+    display: inline-block;
+    
+    transition: transform 0.3s ease;
+}
+
+.img:hover {
+    transform: translateY(-7px) scale(1.04);
 }

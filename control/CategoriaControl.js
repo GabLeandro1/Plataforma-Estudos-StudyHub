@@ -60,7 +60,7 @@ module.exports = class CategoriaControl {
       const categoria = new Categoria();
       categoria.id_aluno = req.params.id_aluno;
 
-      const dados = await categoria.readByID();
+      const dados = await categoria.readByIdAluno();
       return res.status(200).json({ cod: 1, status: true, categoria: dados });
     } catch (error) {
       console.error('Erro ao buscar categoria:', error);

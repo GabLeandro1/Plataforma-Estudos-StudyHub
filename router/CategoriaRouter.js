@@ -16,15 +16,15 @@ module.exports = class CategoriaRouter {
       this._ctrl.readAll(req, res)
     );
 
-    this._router.get('/:id_categoria', this._jwt.validate, (req, res) =>
+    this._router.get('/id_categoria/:id_categoria', this._jwt.validate, (req, res) =>
       this._ctrl.readByIdCategoria(req, res)
     );
 
-    this._router.get('/:id_categoria_pai', this._jwt.validate, (req, res) =>
+    this._router.get('/id_categoria_pai/:id_categoria_pai', this._jwt.validate, (req, res) =>
       this._ctrl.readByIdCategoriaPai(req, res)
     );
     
-    this._router.get('/:id_aluno', this._jwt.validate, (req, res) =>
+    this._router.get('/id_aluno/:id_aluno', this._jwt.validate, (req, res) =>
       this._ctrl.readByIdAluno(req, res)
     );
 

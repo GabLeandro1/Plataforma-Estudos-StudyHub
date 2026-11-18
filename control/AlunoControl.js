@@ -12,7 +12,7 @@ class AlunoControl {
       if (!await aluno.autenticar()) {
         return res.status(401).json({ status: false, msg: "Email ou senha inválido." });
       }
-      const dados = await aluno.readByID();
+      const dados = await aluno.readByEmailSenha();
       const token = jwt.sign({ senha }, JWT_SECRET, { expiresIn: "1h" });
       res.status(200).json({ status: true, token, aluno: dados });
     } catch (err) {
