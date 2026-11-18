@@ -1,58 +1,160 @@
+
 * {
-  text-align: center;
+    box-sizing: border-box;
 }
 
 .formularioInicioTopo {
-    background-color: rgb(39, 76, 124);
-    border: 1px solid #111;
-    border-radius: 8px;
+    width: 90%;
     max-width: 450px;
-    margin: 30px auto;
-    padding: 20px;
+    margin: 50px auto;
+    padding: 28px;
+
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
+
+    background-color: rgb(39, 76, 124);
+    border: 1px solid #1b3557;
+    border-radius: 12px;
+
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.20);
+}
+
+/* Cabeçalho */
+.loginCabecalho {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.loginCabecalho h1 {
+    color: #ffffff;
+    font-size: 28px;
+    margin: 0 0 8px;
+}
+
+.loginCabecalho p {
+    color: #d5e1f0;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Campos */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    text-align: left;
+}
+
+.campo label {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
 }
 
 .formularioInicioTopo input {
-    height: 35px;
-    border: 1px solid #888;
-    border-radius: 5px;
-    padding: 0 10px;
+    width: 100%;
+    height: 42px;
+
+    border: 1px solid #aab9cc;
+    border-radius: 6px;
+
+    padding: 0 12px;
+    background-color: #f7f9fc;
+
+    color: #222;
+    font-size: 14px;
+    text-align: left;
+
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.formularioInicioTopo button {
-    height: 40px;
-    border-radius: 5px;
+.formularioInicioTopo input:focus {
+    border-color: #9dc5ff;
+    box-shadow: 0 0 0 3px rgba(157, 197, 255, 0.25);
+}
+
+.formularioInicioTopo input::placeholder {
+    color: #888;
+}
+
+/* Botão entrar */
+.botaoEntrar {
+    width: 100%;
+    height: 42px;
+
+    border: none;
+    border-radius: 6px;
+
     cursor: pointer;
     background-color: #494e58;
-    color: #ffffff
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: background-color 0.2s, transform 0.2s;
 }
 
+.botaoEntrar:hover {
+    background-color: #5c6472;
+    transform: translateY(-2px);
+}
+
+/* Links inferiores */
 .formularioInicioBaixo {
-    background-color: rgb(192, 192, 192);
-    border: 1px solid #111;
-    border-radius: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    padding: 10px;
+
+    padding: 12px;
+
+    background-color: rgb(192, 192, 192);
+    border: 1px solid #aaa;
+    border-radius: 6px;
 }
 
 .formularioInicioTopo a {
+    color: rgb(24, 75, 145);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
     text-decoration: none;
-    color: rgb(24, 101, 201);
+    cursor: pointer;
+
+    transition: color 0.2s;
+}
+
+.formularioInicioTopo a:hover {
+    color: #102f5c;
+    text-decoration: underline;
+}
+
+/* Erro */
+.error {
+    padding: 10px;
+    margin: 0;
+
+    color: rgb(141, 25, 25);
+    background-color: #f8dede;
+
+    border: 1px solid #e5b5b5;
+    border-radius: 5px;
+
+    font-size: 14px;
     text-align: center;
 }
 
-.error {
-    color: rgb(141, 25, 25)
-}
+/* Responsividade */
+@media (max-width: 480px) {
+    .formularioInicioTopo {
+        padding: 22px;
+        margin: 30px auto;
+    }
 
-h1 {
-    color: white;
-}
-
-a {
-    cursor: pointer;
+    .formularioInicioBaixo {
+        grid-template-columns: 1fr;
+    }
 }

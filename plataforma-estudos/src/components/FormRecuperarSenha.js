@@ -38,18 +38,19 @@ function FormRecuperarSenha() {
     return (
         <form className={styles.formularioInicioTopo} onSubmit={recuperarSenha}>
             {erro && <p className={styles.error}>{erro}</p>}
-
-            <label htmlFor="email">Para recuperar sua senha, informe seu endereço de email que nós enviaremos um link para a alteração de senha.</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                autoComplete="username"
-                placeholder="seu@email.com"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
-            <button type="submit">Enviar</button>
+            <div className={styles.campo}>
+                <label htmlFor="email">Para recuperar sua senha, informe seu endereço de email que nós enviaremos um link para a alteração de senha.</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autoComplete="username"
+                    placeholder="seu@email.com"
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+            </div>
+            <button type="submit" className={styles.botaoEntrar}>Enviar</button>
         </form>
     );
 }

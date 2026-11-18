@@ -40,41 +40,44 @@ function Cadastro() {
     return (
         <form className={styles.formularioInicioTopo} onSubmit={cadastrarUsuario}>
             {erro && <p className={styles.error}>{erro}</p>}
+            <div className={styles.loginCabecalho}>
+                <p>Digite seu dados para realizar o cadastro.</p>
+            </div>
+            <div className={styles.campo}>
+                <label htmlFor="email">Digite seu nome</label>
+                <input
+                    type="nome"
+                    id="nome"
+                    name="email"
+                    autoComplete="username"
+                    placeholder="seu nome"
+                    onChange={(e) => setNome(e.target.value)}
+                    required
+                />
 
-            <label htmlFor="email">Digite seu nome</label>
-            <input
-                type="nome"
-                id="nome"
-                name="email"
-                autoComplete="username"
-                placeholder="seu nome"
-                onChange={(e) => setNome(e.target.value)}
-                required
-            />
+                <label htmlFor="email">Digite seu e-mail</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autoComplete="username"
+                    placeholder="seu@email.com"
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
 
-            <label htmlFor="email">Digite seu e-mail</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                autoComplete="username"
-                placeholder="seu@email.com"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
-
-            <label htmlFor="senha">Digite sua senha</label>
-            <input
-                type="password"
-                id="senha"
-                name="senha"
-                autoComplete="current-password"
-                placeholder="Digite sua senha"
-                onChange={(e) => setSenha(e.target.value)}
-                required
-            />
-
-            <button type="submit">Cadastrar</button>
+                <label htmlFor="senha">Digite sua senha</label>
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    autoComplete="current-password"
+                    placeholder="Digite sua senha"
+                    onChange={(e) => setSenha(e.target.value)}
+                    required
+                />
+            </div>
+            <button type="submit" className={styles.botaoEntrar}>Cadastrar</button>
         </form>
     );
 }

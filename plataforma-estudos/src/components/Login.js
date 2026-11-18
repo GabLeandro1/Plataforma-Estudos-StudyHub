@@ -22,6 +22,7 @@ function Login() {
             if (!resposta.ok) {
                 throw new Error("Falha no login");
             }
+
             const dados = await resposta.json();
 
             if (dados.token) {
@@ -33,7 +34,7 @@ function Login() {
             }
 
         } catch (err) {
-            setErro("Email ou senha inválidos.");
+            setErro("E-mail ou senha inválidos.");
             console.log(err);
         }
     };
@@ -41,34 +42,45 @@ function Login() {
     return (
         <form className={styles.formularioInicioTopo} onSubmit={validarUsuario}>
             {erro && <p className={styles.error}>{erro}</p>}
+            <div className={styles.loginCabecalho}>
+                <p>Entre na sua conta para continuar estudando.</p>
+            </div>
+            <div className={styles.campo}>
+                <label htmlFor="email">Digite seu e-mail</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autoComplete="username"
+                    placeholder="seu@email.com"
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
 
-            <label htmlFor="email">E-mail</label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                autoComplete="username"
-                placeholder="seu@email.com"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
+                <label htmlFor="senha">Digite sua senha</label>
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    autoComplete="current-password"
+                    placeholder="Digite sua senha"
+                    onChange={(e) => setSenha(e.target.value)}
+                    required
+                />
+            </div>
 
-            <label htmlFor="senha">Senha</label>
-            <input
-                type="password"
-                id="senha"
-                name="senha"
-                autoComplete="current-password"
-                placeholder="Digite sua senha"
-                onChange={(e) => setSenha(e.target.value)}
-                required
-            />
-
-            <button type="submit">Entrar</button>
+            <button type="submit" className={styles.botaoEntrar}>
+                Entrar
+            </button>
 
             <div className={styles.formularioInicioBaixo}>
-                <b><a onClick={() => navigate('/cadastro')}>Não tem uma conta?</a></b>
-                <b><a button onClick={() => navigate('/recuperar-senha')}>Esqueceu a senha?</a></b>
+                <a onClick={() => navigate('/cadastro')}>
+                    Não tem uma conta?
+                </a>
+
+                <a onClick={() => navigate('/recuperar-senha')}>
+                    Esqueceu a senha?
+                </a>
             </div>
         </form>
     );

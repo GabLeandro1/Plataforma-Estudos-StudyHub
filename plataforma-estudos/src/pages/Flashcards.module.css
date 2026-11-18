@@ -164,3 +164,44 @@
         padding: 20px;
     }
 }
+
+.formularioCategoria {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #182338;
+    border: 1px solid #293b58;
+    border-radius: 12px;
+}
+
+.formularioCategoria h2 {
+    color: #72a7ff;
+}
+
+.formularioCategoria label {
+    color: #fff;
+}
+
+.formularioCategoria input,
+.formularioCategoria select {
+    padding: 10px;
+    border: 1px solid #293b58;
+    border-radius: 8px;
+    background-color: #243653;
+    color: white;
+}
+
+.botoesFormulario {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.botoesFormulario button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}

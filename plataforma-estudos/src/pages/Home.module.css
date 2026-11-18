@@ -1,0 +1,88 @@
+.home {
+    min-height: 100vh;
+    width: 100%;
+    padding: 35px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabecalho {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 10px;
+
+    text-align: center;
+}
+
+.cabecalho h1 {
+    color: rgb(255, 255, 255);
+    font-size: 36px;
+    margin: 0 0 12px;
+}
+
+.cabecalho p {
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.cabecalho span {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.img {
+    width: 100px;
+    height: 70px;
+    display: inline-block;
+}
+
+.titulo_imagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+
+.buttonGoBack {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 22px;
+
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.buttonGoBack:hover {
+    background-color: #919192;
+    transform: translateX(-3px);
+}
+
+@media (max-width: 480px) {
+    .cabecalho h1 {
+        font-size: 30px;
+    }
+
+    .cabecalho p {
+        font-size: 16px;
+    }
+}
