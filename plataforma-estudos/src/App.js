@@ -13,6 +13,7 @@ import Pomodoro from './pages/Pomodoro'
 import CronometroProgressivo from './pages/CronometroProgressivo'
 import CronometroRegressivo from './pages/CronometroRegressivo'
 import Flashcards from './pages/Flashcards'
+import Historico from './pages/Historico'
 import { useState } from 'react'
 
 
@@ -63,7 +64,7 @@ function App() {
             element={
               <>
                 <NavBar setLogado={setLogado}/>
-                <MenuCronometroAluno />
+                <Historico />
               </>
             }
           />

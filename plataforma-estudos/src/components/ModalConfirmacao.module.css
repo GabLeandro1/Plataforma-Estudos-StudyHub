@@ -61,6 +61,7 @@
 
 .cancelar:hover {
     background-color: #50617a;
+    transform: translateY(-7px) scale(1.04);
 }
 
 .confirmar {
@@ -70,4 +71,5 @@
 
 .confirmar:hover {
     background-color: #1d4ed8;
+    transform: translateY(-7px) scale(1.04);
 }

@@ -71,6 +71,8 @@ class AlunoControl {
       const aluno = new Aluno();
       aluno.id_aluno = req.params.id_aluno
 
+      const { nome, senha, email, data_cadastro } = req.body.aluno;
+
       const dados = await aluno.readByID();
       if (!dados) return res.status(404).json({ status: false, msg: "Aluno não encontrado." });
 

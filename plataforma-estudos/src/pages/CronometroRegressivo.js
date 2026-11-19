@@ -7,7 +7,9 @@ function CronometroRegressivo() {
     const [segundos, setSegundos] = useState(0);
     const [minutos, setMinutos] = useState(0);
     const [horas, setHoras] = useState(0);
-
+    const [salvando, setSalvando] = useState(false);
+    const [erro, setErro] = useState("");
+    const tempoInicial = useRef(0);
     const intervalo = useRef(null);
 
     const tempoAtual = useRef({
@@ -89,10 +91,71 @@ function CronometroRegressivo() {
         };
 
         tempoAtual.current = novoTempo;
+ 
+        tempoInicial.current =
+        (novoTempo.horas * 3600) +
+        (novoTempo.minutos * 60) +
+        novoTempo.segundos;
 
         setHoras(novoTempo.horas);
         setMinutos(novoTempo.minutos);
         setSegundos(novoTempo.segundos);
+    }
+
+    async function parar() {
+        pausar();
+
+        const tempoRestante = (tempoAtual.current.horas * 3600) + (tempoAtual.current.minutos * 60) + tempoAtual.current.segundos;
+
+        const tempoTotal =  tempoInicial.current - tempoRestante;
+
+        if (tempoTotal <= 0) {
+            setErro("Você precisa estudar por pelo menos 1 segundo.");
+            return;
+        }
+
+        if (salvando) return;
+
+        try {
+            setSalvando(true);
+            setErro("");
+
+            const aluno = JSON.parse(localStorage.getItem("dados"));
+
+            if (!aluno || !aluno.id_aluno) {
+                throw new Error("Aluno não encontrado.");
+            }
+
+            const resposta = await fetch("http://localhost:3000/sessoes/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id_aluno: aluno.id_aluno,
+                    tempo_estudado: tempoTotal
+                })
+            });
+
+            if (!resposta.ok) {
+                throw new Error("Falha ao salvar a sessão de estudo.");
+            }
+
+            const dados = await resposta.json();
+
+            if (dados.msg === "Sessão criada com sucesso.") {
+                resetar();
+            } else {
+                setErro("Ocorreu um problema ao salvar sua sessão.");
+            }
+
+        } catch (err) {
+            setErro("Não foi possível salvar sua sessão de estudo.");
+            console.error(err);
+
+        } finally {
+            setSalvando(false);
+        }
     }
 
     const visor = `${formatarTempo(horas)}:${formatarTempo(minutos)}:${formatarTempo(segundos)}`;
@@ -115,6 +178,9 @@ function CronometroRegressivo() {
                 <button onClick={iniciar}>Iniciar</button>
                 <button onClick={pausar}>Pausar</button>
                 <button onClick={resetar}>Resetar</button>
+                <button onClick={parar} disabled={salvando}>
+                    {salvando ? "Salvando..." : "Parar"}
+                </button>
             </nav>
         </section>
     );

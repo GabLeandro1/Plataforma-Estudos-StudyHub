@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path');
 const AlunoRouter = require('./router/AlunoRouter.js');
 const CardRouter = require('./router/CardRouter.js');
-const CategoriaRouter = require('./router/CategoriaRouter.js');;
+const CategoriaRouter = require('./router/CategoriaRouter.js');
+const SessoesEstudoRouter = require('./router/SessoesEstudoRouter.js');
 
 const app = express();
 
@@ -31,10 +32,12 @@ app.use(express.static(path.join(__dirname, 'view')));
 const alunoRoteador = new AlunoRouter();
 const cardRoteador = new CardRouter();
 const categoriaRoteador = new CategoriaRouter();
+const sessaoRoteador = new SessoesEstudoRouter();
 
 app.use('/alunos', alunoRoteador.createRoutes());
 app.use('/card', cardRoteador.createRoutes());
 app.use('/categoria', categoriaRoteador.createRoutes());
+app.use('/sessoes', sessaoRoteador.createRoutes());
 
 app.listen(portaServico, function () {
   console.log(`API rodando no endereço: http://localhost:${portaServico}/`);
