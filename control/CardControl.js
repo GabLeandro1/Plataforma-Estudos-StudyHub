@@ -29,6 +29,8 @@ module.exports = class CardControl {
     }
 
     async create(req, res) {
+        const data = new Date();
+
         const { id_aluno, id_categoria, pergunta, resposta } = req.body.card;
 
         const card = new Card();
@@ -36,7 +38,7 @@ module.exports = class CardControl {
         card.id_categoria = id_categoria;
         card.pergunta = pergunta;
         card.resposta = resposta;
-        card.data_criacao = new Date().toLocaleDateString('pt-BR');;
+        card.data_criacao = data.toISOString().split('T')[0];
         
 
         const criado = await card.create();

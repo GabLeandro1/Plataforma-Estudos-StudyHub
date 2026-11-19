@@ -14,6 +14,7 @@ import CronometroProgressivo from './pages/CronometroProgressivo'
 import CronometroRegressivo from './pages/CronometroRegressivo'
 import Flashcards from './pages/Flashcards'
 import Historico from './pages/Historico'
+import Configuracoes from './pages/Configuracoes'
 import { useState } from 'react'
 
 
@@ -74,7 +75,7 @@ function App() {
             element={
               <>
                 <NavBar setLogado={setLogado}/>
-                <MenuCronometroAluno />
+                <Configuracoes />
               </>
             }
           />

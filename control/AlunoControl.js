@@ -50,12 +50,13 @@ class AlunoControl {
 
   async create(req, res) {
     try {
+      const data = new Date();
       const { nome, senha, email } = req.body;
       const aluno = new Aluno()
       aluno.nome = nome;
       aluno.senha = senha;
       aluno.email = email;
-      aluno.data_cadastro = new Date().toLocaleDateString('pt-BR');
+      aluno.data_cadastro = data.toISOString().split('T')[0];
       const criado = await aluno.create();
       res.status(201).json({
         status: criado,
@@ -70,8 +71,6 @@ class AlunoControl {
     try {
       const aluno = new Aluno();
       aluno.id_aluno = req.params.id_aluno
-
-      const { nome, senha, email, data_cadastro } = req.body.aluno;
 
       const dados = await aluno.readByID();
       if (!dados) return res.status(404).json({ status: false, msg: "Aluno não encontrado." });

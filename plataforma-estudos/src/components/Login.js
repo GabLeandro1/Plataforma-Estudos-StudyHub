@@ -1,6 +1,6 @@
 import styles from '../components/Form.module.css';
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Login({ setLogado }) {
     console.log("setLogado:", setLogado);
@@ -9,7 +9,10 @@ function Login({ setLogado }) {
     const [senha, setSenha] = useState("");
     const [erro, setErro] = useState("");
     const navigate = useNavigate();
-
+    useEffect(() => {
+        localStorage.removeItem('dados');
+        localStorage.removeItem('token');
+    }, []);
     const validarUsuario = async (e) => {
         e.preventDefault();
         setErro("");

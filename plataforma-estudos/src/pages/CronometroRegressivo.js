@@ -5,11 +5,13 @@ import ButtonGoBack from '../layout/ButtonGoBack'
 
 function CronometroRegressivo() {
     const [segundos, setSegundos] = useState(0);
+    const [txtBtn1, setTxtBtn1] = useState("Iniciar");
     const [minutos, setMinutos] = useState(0);
     const [horas, setHoras] = useState(0);
     const [salvando, setSalvando] = useState(false);
     const [erro, setErro] = useState("");
     const tempoInicial = useRef(0);
+    const [horaInicial, setHoraInicial] = useState("00:00:00");
     const intervalo = useRef(null);
 
     const tempoAtual = useRef({
@@ -49,8 +51,8 @@ function CronometroRegressivo() {
     }
 
     function iniciar() {
-        if (intervalo.current !== null) return;
-
+        if (intervalo.current !== null)
+            return;
         if (
             tempoAtual.current.horas === 0 &&
             tempoAtual.current.minutos === 0 &&
@@ -100,6 +102,7 @@ function CronometroRegressivo() {
         setHoras(novoTempo.horas);
         setMinutos(novoTempo.minutos);
         setSegundos(novoTempo.segundos);
+        setHoraInicial(event.target.value);
     }
 
     async function parar() {
@@ -164,18 +167,22 @@ function CronometroRegressivo() {
         <section className={styles.campo_hora}>
             <ButtonGoBack/>
             <h1>Digite o valor inicial de hora</h1>
-
             <input
                 type="time"
                 name="horaInicio"
                 step="1"
+                value={horaInicial}
                 onChange={definirTempo}
             />
-
+            <h1>Tempo restante</h1>
             <h1 className={styles.visor}>{visor}</h1>
-
             <nav>
-                <button onClick={iniciar}>Iniciar</button>
+                <button onClick={() => {
+                    iniciar();
+                    setTxtBtn1("Continuar");
+                }}>
+                    {txtBtn1}
+                </button>
                 <button onClick={pausar}>Pausar</button>
                 <button onClick={resetar}>Resetar</button>
                 <button onClick={parar} disabled={salvando}>

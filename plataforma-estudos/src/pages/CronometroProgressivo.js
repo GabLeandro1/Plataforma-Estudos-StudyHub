@@ -6,6 +6,7 @@ import ButtonGoBack from '../layout/ButtonGoBack';
 function CronometroProgressivo() {
     const [segundos, setSegundos] = useState(0);
     const [minutos, setMinutos] = useState(0);
+    const [txtBtn1, setTxtBtn1] = useState("Iniciar");
     const [horas, setHoras] = useState(0);
     const [erro, setErro] = useState("");
     const [salvando, setSalvando] = useState(false);
@@ -132,7 +133,12 @@ function CronometroProgressivo() {
             <h1 className={styles.visor}>{visor}</h1>
 
             <nav>
-                <button onClick={iniciar}>Iniciar</button>
+                <button  onClick={() => {
+                    iniciar();
+                    setTxtBtn1("Continuar");
+                }}>
+                    {txtBtn1}
+                </button>
                 <button onClick={pausar}>Pausar</button>
                 <button onClick={resetar}>Resetar</button>
 

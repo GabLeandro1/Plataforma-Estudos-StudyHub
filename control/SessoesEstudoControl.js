@@ -40,11 +40,12 @@ class SessoesEstudoControl {
 
   async create(req, res) {
     try {
+      const data = new Date();
       const { tempo_estudado, id_aluno } = req.body;
       const sessao = new SessoesEstudo()
       sessao.tempo_estudado = tempo_estudado;
       sessao.id_aluno = id_aluno;
-      sessao.data = new Date().toLocaleDateString('pt-BR');
+      sessao.data = data.toISOString().split('T')[0];
       const criado = await sessao.create();
       res.status(201).json({
         status: criado,

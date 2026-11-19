@@ -40,9 +40,11 @@ function Cadastro() {
     return (
         <form className={styles.formularioInicioTopo} onSubmit={cadastrarUsuario}>
             {erro && <p className={styles.error}>{erro}</p>}
+
             <div className={styles.loginCabecalho}>
                 <p>Digite seu dados para realizar o cadastro.</p>
             </div>
+            
             <div className={styles.campo}>
                 <label htmlFor="email">Digite seu nome</label>
                 <input
