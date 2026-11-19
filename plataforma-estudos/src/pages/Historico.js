@@ -1,6 +1,7 @@
 
 import styles from './Historico.module.css';
 import { useState, useEffect } from 'react';
+import { requisicaoComToken } from '../services/api';
 
 function Historico() {
     const [sessoes, setSessoes] = useState([]);
@@ -17,14 +18,14 @@ function Historico() {
                     throw new Error("Aluno não encontrado.");
                 }
 
-                const resposta = await fetch(
-                    `http://localhost:3000/sessoes/aluno/${aluno.id_aluno}`,
+                const resposta = await requisicaoComToken(`/sessoes/aluno/${aluno.id_aluno}`,
                     {
                         method: "GET",
                         headers: {
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         },
+                        credentials: 'include'
                     }
                 );
 

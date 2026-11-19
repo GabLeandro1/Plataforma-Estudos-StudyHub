@@ -17,6 +17,7 @@ function Cadastro() {
             const resposta = await fetch("http://localhost:3000/alunos/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify({ nome, email, senha }),
             });
 

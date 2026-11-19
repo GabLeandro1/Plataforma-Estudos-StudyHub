@@ -1,81 +1,187 @@
 const Card = require('../model/Card');
 
 module.exports = class CardControl {
+
     async readAll(req, res) {
-        const card = new Card();
-        const dados = await card.readAll();
-        return res.status(200).send({ cod: 1, status: true, cards: dados });
+        try {
+            const card = new Card();
+            const dados = await card.readAll();
+
+            return res.status(200).json({
+                cod: 1,
+                status: true,
+                cards: dados
+            });
+
+        } catch (err) {
+            console.error('Erro ao listar cards:', err);
+
+            return res.status(500).json({
+                cod: 99,
+                status: false,
+                msg: 'Erro ao listar cards.'
+            });
+        }
     }
 
     async readByIdCard(req, res) {
-        const card = new Card();
-        card.id_card = req.params.id_card;
-        const dados = await card.readByIDCard();
-        return res.status(200).send({ cod: 1, status: true, card: dados });
+        try {
+            const card = new Card();
+            card.id_card = req.params.id_card;
+
+            const dados = await card.readByIDCard();
+
+            return res.status(200).json({
+                cod: 1,
+                status: true,
+                card: dados
+            });
+
+        } catch (err) {
+            console.error('Erro ao buscar card:', err);
+
+            return res.status(500).json({
+                cod: 99,
+                status: false,
+                msg: 'Erro ao buscar card.'
+            });
+        }
     }
 
     async readByIdAluno(req, res) {
-        const card = new Card();
-        card.id_aluno = req.params.id_aluno;
-        const dados = await card.readByIDAluno();
-        return res.status(200).send({ cod: 1, status: true, card: dados });
+        try {
+            const card = new Card();
+            card.id_aluno = req.params.id_aluno;
+
+            const dados = await card.readByIDAluno();
+
+            return res.status(200).json({
+                cod: 1,
+                status: true,
+                card: dados
+            });
+
+        } catch (err) {
+            console.error('Erro ao buscar cards do aluno:', err);
+
+            return res.status(500).json({
+                cod: 99,
+                status: false,
+                msg: 'Erro ao buscar cards do aluno.'
+            });
+        }
     }
 
     async readByIdCategoria(req, res) {
-        const card = new Card();
-        card.id_categoria = req.params.id_categoria;
-        const dados = await card.readByIDCategoria();
-        return res.status(200).send({ cod: 1, status: true, card: dados });
+        try {
+            const card = new Card();
+            card.id_categoria = req.params.id_categoria;
+
+            const dados = await card.readByIDCategoria();
+
+            return res.status(200).json({
+                cod: 1,
+                status: true,
+                card: dados
+            });
+
+        } catch (err) {
+            console.error('Erro ao buscar cards da categoria:', err);
+
+            return res.status(500).json({
+                cod: 99,
+                status: false,
+                msg: 'Erro ao buscar cards da categoria.'
+            });
+        }
     }
 
     async create(req, res) {
-        const data = new Date();
+        try {
+            const data = new Date();
 
-        const { id_aluno, id_categoria, pergunta, resposta } = req.body.card;
+            const { id_aluno, id_categoria, pergunta, resposta } = req.body.card;
 
-        const card = new Card();
-        card.id_aluno = id_aluno;
-        card.id_categoria = id_categoria;
-        card.pergunta = pergunta;
-        card.resposta = resposta;
-        card.data_criacao = data.toISOString().split('T')[0];
-        
+            const card = new Card();
 
-        const criado = await card.create();
-        return res.status(201).send({
-            cod: criado ? 1 : 0,
-            status: criado,
-            msg: criado ? "Card cadastrado" : "Erro ao cadastrar card"
-        });
+            card.id_aluno = id_aluno;
+            card.id_categoria = id_categoria;
+            card.pergunta = pergunta;
+            card.resposta = resposta;
+            card.data_criacao = data.toISOString().split('T')[0];
+
+            const criado = await card.create();
+
+            return res.status(201).json({
+                cod: criado ? 1 : 0,
+                status: criado,
+                msg: criado ? 'Card cadastrado com sucesso.' : 'Erro ao cadastrar card.'
+            });
+
+        } catch (err) {
+            console.error('Erro ao cadastrar card:', err);
+
+            return res.status(500).json({
+                cod: 99,
+                status: false,
+                msg: 'Erro interno ao cadastrar card.'
+            });
+        }
     }
 
     async update(req, res) {
-        card.id_card = req.params.id_card;
+        try {
+            const card = new Card();
 
-        const { id_aluno, id_categoria, pergunta, resposta } = req.body.card;
+            card.id_card = req.params.id_card;
 
-        const card = new Card();
-        card.id_aluno = id_aluno;
-        card.id_categoria = id_categoria;
-        card.pergunta = pergunta;
-        card.resposta = resposta;
+            const { id_aluno, id_categoria, pergunta, resposta } = req.body.card;
 
-        const atualizado = await card.update();
-        return res.status(200).send({
-            cod: atualizado ? 1 : 0,
-            status: atualizado,
-            msg: atualizado ? "Atualizado com sucesso" : "Erro ao atualizar"
-        });
+            card.id_aluno = id_aluno;
+            card.id_categoria = id_categoria;
+            card.pergunta = pergunta;
+            card.resposta = resposta;
+
+            const atualizado = await card.update();
+
+            return res.status(200).json({
+                cod: atualizado ? 1 : 0,
+                status: atualizado,
+                msg: atualizado ? 'Card atualizado com sucesso.' : 'Erro ao atualizar card.'
+            });
+
+        } catch (err) {
+            console.error('Erro ao atualizar card:', err);
+
+            return res.status(500).json({
+                cod: 99,
+                status: false,
+                msg: 'Erro interno ao atualizar card.'
+            });
+        }
     }
 
     async delete(req, res) {
-        const card = new Card();
-        card.id_card = req.params.id_card;
-        const excluido = await card.delete();
-        return res.status(200).send({
-            cod: excluido ? 1 : 0,
-            status: excluido,
-            msg: excluido ? "Deletado com sucesso" : "Erro ao deletar"
-        });
+        try {
+            const card = new Card();
+            card.id_card = req.params.id_card;
+
+            const excluido = await card.delete();
+
+            return res.status(200).json({
+                cod: excluido ? 1 : 0,
+                status: excluido,
+                msg: excluido ? 'Card excluído com sucesso.' : 'Erro ao excluir card.'
+            });
+
+        } catch (err) {
+            console.error('Erro ao excluir card:', err);
+
+            return res.status(500).json({
+                cod: 99,
+                status: false,
+                msg: 'Erro interno ao excluir card.'
+            });
+        }
     }
-}
+};

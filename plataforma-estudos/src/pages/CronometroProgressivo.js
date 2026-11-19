@@ -2,6 +2,7 @@
 import styles from './CronometroProgressivo.module.css';
 import { useState, useRef, useEffect } from 'react';
 import ButtonGoBack from '../layout/ButtonGoBack';
+import { requisicaoComToken } from '../services/api';
 
 function CronometroProgressivo() {
     const [segundos, setSegundos] = useState(0);
@@ -86,11 +87,12 @@ function CronometroProgressivo() {
                 throw new Error("Aluno não encontrado.");
             }
 
-            const resposta = await fetch("http://localhost:3000/sessoes/", {
+            const resposta = await requisicaoComToken("/sessoes/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
+                credentials: 'include',
                 body: JSON.stringify({
                     id_aluno: aluno.id_aluno,
                     tempo_estudado: tempoTotal

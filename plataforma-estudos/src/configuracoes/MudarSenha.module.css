@@ -1,0 +1,102 @@
+.formSenha {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 550px;
+    padding: 24px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.titulo {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.grupoCampo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 14px;
+    box-sizing: border-box;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #111827;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.botaoSalvar {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.botaoSalvar:hover:not(:disabled) {
+    background-color: #1d4ed8;
+}
+
+.botaoSalvar:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+}
+
+.mensagemErro {
+    margin: 0;
+    color: #ef4444;
+    font-size: 14px;
+}
+
+.mensagemSucesso {
+    margin: 0;
+    color: #16a34a;
+    font-size: 14px;
+}
+
+/* Modo escuro */
+:global(.dark) .titulo {
+    color: #ffffff;
+}
+
+:global(.dark) .label {
+    color: #d1d5db;
+}
+
+:global(.dark) .input {
+    border-color: #4b5563;
+    background-color: #1f2937;
+    color: #ffffff;
+}
+
+:global(.dark) .input:focus {
+    border-color: #3b82f6;
+}

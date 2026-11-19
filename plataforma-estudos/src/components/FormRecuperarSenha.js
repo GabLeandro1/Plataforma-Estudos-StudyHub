@@ -1,6 +1,7 @@
 import styles from '../components/Form.module.css';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
+import { requisicaoComToken } from '../services/api';
 
 function FormRecuperarSenha() {
     const [email, setEmail] = useState("");
@@ -12,9 +13,10 @@ function FormRecuperarSenha() {
         setErro("");
 
         try {
-            const resposta = await fetch("http://localhost:3000/alunos/", {
+            const resposta = await requisicaoComToken("http://localhost:3000/alunos/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify({ email }),
             });
 

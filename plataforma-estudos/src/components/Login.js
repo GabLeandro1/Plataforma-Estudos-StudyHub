@@ -21,6 +21,7 @@ function Login({ setLogado }) {
             const resposta = await fetch("http://localhost:3000/alunos/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify({ email, senha }),
             });
 

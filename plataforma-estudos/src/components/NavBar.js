@@ -8,22 +8,22 @@ import ButtonLogout from "../layout/LogoutButton"
 
 function NavBar({ setLogado }) {
  return (
-       <nav class={styles.navbar}>
+       <nav className={styles.navbar}>
             <Container customClass="min-height">
                 <Link to="/menu/aluno/">
                     <img class={styles.img} src={logo} alt="logo"/>
                 </Link>
-                <ul class={styles.list}>
-                    <li class={styles.item}>
+                <ul className={styles.list}>
+                    <li className={styles.item}>
                         <Link to="/menu/aluno/cronometro">Cronômetro de estudo</Link>
                     </li>
-                    <li class={styles.item}>
+                    <li className={styles.item}>
                         <Link to="/menu/aluno/flashcards">Flashcards</Link>
                     </li>
-                    <li class={styles.item}>
+                    <li className={styles.item}>
                         <Link to="/menu/aluno/historico">Histórico de estudo</Link>
                     </li>
-                    <li class={styles.item}>
+                    <li className={styles.item}>
                         <Link to="/menu/aluno/configuracoes">Configurações</Link>
                     </li>
                 </ul>

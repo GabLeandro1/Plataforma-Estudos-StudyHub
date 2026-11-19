@@ -1,119 +1,114 @@
+
 import './App.css';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import { useState } from 'react';
 
 import Login from './pages/Home';
 import Cadastro from './pages/Cadastro';
 import RecuperarSenha from './pages/RecuperarSenha';
+
 import MenuCronometroAluno from './pages/MenuCronometroAluno';
+import Pomodoro from './pages/Pomodoro';
+import CronometroProgressivo from './pages/CronometroProgressivo';
+import CronometroRegressivo from './pages/CronometroRegressivo';
+
+import Flashcards from './pages/Flashcards';
+import Historico from './pages/Historico';
+
+import Configuracoes from './pages/Configuracoes';
 
 import NavBar from './components/NavBar';
 
-import Pomodoro from './pages/Pomodoro'
-import CronometroProgressivo from './pages/CronometroProgressivo'
-import CronometroRegressivo from './pages/CronometroRegressivo'
-import Flashcards from './pages/Flashcards'
-import Historico from './pages/Historico'
-import Configuracoes from './pages/Configuracoes'
-import { useState } from 'react'
-
+function LayoutAluno({ setLogado }) {
+    return (
+        <>
+            <NavBar setLogado={setLogado} />
+            <Outlet />
+        </>
+    );
+}
 
 function App() {
-  const [logado, setLogado] = useState(localStorage.getItem("token") ? true : false);
-  return (
-    <BrowserRouter>
-      <div className={logado ? "App logado" : "App"}>
-        <Routes>
-          <Route path="/" element={<Login setLogado={setLogado}/>} />
+    const [logado, setLogado] = useState(
+        !!localStorage.getItem("token")
+    );
 
-          <Route path="/cadastro" element={<Cadastro />} />
+    return (
+        <BrowserRouter>
+            <div className={logado ? "App logado" : "App"}>
 
-          <Route path="/recuperar-senha" element={<RecuperarSenha />} />
+                <Routes>
 
-          <Route
-            path="/menu/aluno"
-            element={
-              <>
-                <NavBar setLogado={setLogado}/>
-                <MenuCronometroAluno />
-              </>
-            }
-          />
+                    {/* Rotas públicas */}
+                    <Route
+                        path="/"
+                        element={<Login setLogado={setLogado} />}
+                    />
 
-          <Route
-            path="/menu/aluno/cronometro"
-            element={
-              <>
-                <NavBar setLogado={setLogado}/>
-                <MenuCronometroAluno />
-              </>
-            }
-          />
+                    <Route
+                        path="/cadastro"
+                        element={<Cadastro />}
+                    />
 
-          <Route
-            path="/menu/aluno/flashcards"
-            element={
-              <>
-                <NavBar setLogado={setLogado}/>
-                <Flashcards />
-              </>
-            }
-          />
+                    <Route
+                        path="/recuperar-senha"
+                        element={<RecuperarSenha />}
+                    />
 
-          <Route
-            path="/menu/aluno/historico"
-            element={
-              <>
-                <NavBar setLogado={setLogado}/>
-                <Historico />
-              </>
-            }
-          />
+                    {/* Rotas do aluno */}
+                    <Route
+                        path="/menu/aluno"
+                        element={<LayoutAluno setLogado={setLogado} />}
+                    >
 
-          <Route
-            path="/menu/aluno/configuracoes"
-            element={
-              <>
-                <NavBar setLogado={setLogado}/>
-                <Configuracoes />
-              </>
-            }
-          />
+                        <Route
+                            index
+                            element={<MenuCronometroAluno />}
+                        />
 
-          <Route
-            path="/menu/aluno/cronometro/pomodoro"
-            element={
-              <>
-                <NavBar setLogado={setLogado}/>
-                <Pomodoro />
-              </>
-            }
-          />
+                        <Route
+                            path="cronometro"
+                            element={<MenuCronometroAluno />}
+                        />
 
-          <Route
-            path="/menu/aluno/cronometro/cronometro-regressivo"
-            element={
-              <>
-                <NavBar setLogado={setLogado}/>
-                <CronometroRegressivo />
-              </>
-            }
-          />
+                        <Route
+                            path="cronometro/pomodoro"
+                            element={<Pomodoro />}
+                        />
 
-          <Route
-            path="/menu/aluno/cronometro/cronometro-progressivo"
-            element={
-              <>
-                <NavBar setLogado={setLogado}/>
-                <CronometroProgressivo />
-              </>
-            }
-          />
+                        <Route
+                            path="cronometro/cronometro-regressivo"
+                            element={<CronometroRegressivo />}
+                        />
 
-        </Routes>
-      </div>
-    </BrowserRouter>
-  );
+                        <Route
+                            path="cronometro/cronometro-progressivo"
+                            element={<CronometroProgressivo />}
+                        />
+
+                        <Route
+                            path="flashcards"
+                            element={<Flashcards />}
+                        />
+
+                        <Route
+                            path="historico"
+                            element={<Historico />}
+                        />
+
+                        <Route
+                            path="configuracoes/*"
+                            element={<Configuracoes />}
+                        />
+
+                    </Route>
+
+                </Routes>
+
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

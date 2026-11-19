@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import styles from './Flashcards.module.css';
+import { requisicaoComToken } from '../services/api';
 
 function Flashcards() {
     // Estados do formulário
@@ -42,14 +43,12 @@ function Flashcards() {
     // Buscar categorias do aluno
     async function getCategorias() {
         try {
-            const resposta = await fetch(
-                `http://localhost:3000/categoria/id_aluno/${aluno.id_aluno}`,
-                {
+            const resposta = await requisicaoComToken(`/categoria/id_aluno/${aluno.id_aluno}`, {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`
-                    }
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
                 }
             );
 
@@ -90,8 +89,7 @@ function Flashcards() {
 
             setSalvandoCategoria(true);
 
-            const resposta = await fetch(
-                'http://localhost:3000/categoria',
+            const resposta = await requisicaoComToken('/categoria',
                 {
                     method: 'POST',
                     headers: {
@@ -139,8 +137,7 @@ function Flashcards() {
             setCards([]);
             setCardsRevelados([]);
 
-            const resposta = await fetch(
-                `http://localhost:3000/card/${categoria.id_categoria}`,
+            const resposta = await requisicaoComToken(`/card/${categoria.id_categoria}`,
                 {
                     method: 'GET',
                     headers: {
