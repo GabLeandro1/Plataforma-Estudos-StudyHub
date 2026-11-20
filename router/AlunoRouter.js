@@ -19,6 +19,10 @@ module.exports = class AlunoRouter {
             this._ctrl.refresh(req, res)
         );
 
+        this._router.post('/recuperar-senha', (req, res) =>
+            this._ctrl.recuperar_senha(req, res)
+        );
+
         this._router.post('/', (req, res) =>
             this._ctrl.create(req, res)
         );

@@ -7,6 +7,7 @@ function Historico() {
     const [sessoes, setSessoes] = useState([]);
     const [erro, setErro] = useState("");
     const [carregando, setCarregando] = useState(true);
+    const [filtro, setFiltro] = useState('todas');
 
     useEffect(() => {
         async function lerSessoes() {
@@ -96,6 +97,44 @@ function Historico() {
             total + (Number(sessao.tempo_estudado) || 0),
         0
     );
+
+    const sessoesFiltradas = sessoes.filter((sessao) => {
+    if (filtro === 'todas') {
+        return true;
+    }
+
+    const dataSessao = new Date(
+        sessao.data.toString().replace(' ', 'T')
+    );
+
+    const hoje = new Date();
+
+    // Remove as horas para comparar somente as datas
+    hoje.setHours(0, 0, 0, 0);
+
+    const dataComparacao = new Date(dataSessao);
+    dataComparacao.setHours(0, 0, 0, 0);
+
+    if (filtro === 'hoje') {
+        return dataComparacao.getTime() === hoje.getTime();
+    }
+
+    if (filtro === '7dias') {
+        const limite = new Date(hoje);
+        limite.setDate(limite.getDate() - 6);
+
+        return dataComparacao >= limite && dataComparacao <= hoje;
+    }
+
+    if (filtro === '30dias') {
+        const limite = new Date(hoje);
+        limite.setDate(limite.getDate() - 29);
+
+        return dataComparacao >= limite && dataComparacao <= hoje;
+    }
+
+    return true;
+});
 
     return (
         <section className={styles.container}>

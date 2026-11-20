@@ -70,16 +70,28 @@ class Categoria {
   }
 
   async readByIdAluno() {
-    const conexao = await Banco.getConexao();
-    const SQL = 'SELECT * FROM categorias WHERE id_aluno = ?';
+      const con = await Banco.getConexao();
 
-    try {
-      const [rows] = await conexao.execute(SQL, [this._id_aluno]);
-      return rows;
-    } catch (error) {
-      console.error('Erro ao buscar atestados por id do(a) aluno:', error);
-      return [];
-    }
+      try {
+          const [rows] = await con.execute(
+              `SELECT
+                  c.*,
+                  COUNT(card.id_card) AS quantidade_cards
+              FROM categorias c
+              LEFT JOIN cards card
+                  ON card.id_categoria = c.id_categoria
+                  AND card.id_aluno = c.id_aluno
+              WHERE c.id_aluno = ?
+              GROUP BY c.id_categoria`,
+              [this._id_aluno]
+          );
+
+          return rows;
+
+      } catch (err) {
+          console.error(err);
+          throw err;
+      }
   }
 
   async readByIdCategoriaPai() {

@@ -1,6 +1,6 @@
 module.exports = class CardMiddleware {
   async validarCamposObrigatorios(req, res, next) {
-    const card = req.body.card;
+    const card = req.body;
 
     if (!card) {
       return res.status(400).json({ cod: 0, status: false, msg: "Dados do card são obrigatórios" });

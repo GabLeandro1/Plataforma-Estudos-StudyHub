@@ -1,207 +1,290 @@
-
 .home {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 30px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     width: 100%;
     min-height: 80vh;
     padding: 40px;
-
     box-sizing: border-box;
     color: #ffffff;
+}
+
+/* Cabeçalho */
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cabecalho h1 {
+    color: #72a7ff;
+    font-size: 1.8rem;
+    margin: 0;
+    flex: 1;
+}
+
+.btnRevelarSubCategorias {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.btnRevelarSubCategorias:hover {
+    cursor: pointer;
+}
+
+
+
+.btnAdicionar,
+.btnVoltar {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btnAdicionar {
+    background-color: #315b91;
+    color: #ffffff;
+}
+
+.btnAdicionar:hover {
+    background-color: #4779b8;
+}
+
+.btnVoltar {
+    background-color: #243653;
+    color: #ffffff;
+}
+
+.btnVoltar:hover {
+    background-color: #315b91;
 }
 
 /* Categorias */
 
 .listaCategorias {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     background-color: #182338;
     border: 1px solid #293b58;
     border-radius: 15px;
-
     padding: 25px;
-    height: fit-content;
-}
-
-.listaCategorias h1 {
-    font-size: 1.5rem;
-    margin: 0 0 25px;
-    color: #72a7ff;
-}
-
-.arvoreCategorias {
-    display: flex;
-    flex-direction: column;
 }
 
 .categoria {
     display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.categoria_linha {
+    display: flex;
     align-items: center;
-    gap: 8px;
-
-    margin: 5px 0;
 }
 
-.seta {
+.btnCategoria {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
     background: none;
     border: none;
-
-    color: #72a7ff;
-    cursor: pointer;
-    font-size: 0.8rem;
-
-    padding: 5px;
-}
-
-.espacoSeta {
-    width: 20px;
-    flex-shrink: 0;
-}
-
-.nomeCategoria {
-    background: none;
-    border: none;
-
+    border-radius: 6px;
     color: #eaf1ff;
     font-size: 1rem;
     text-align: left;
-
     cursor: pointer;
-    padding: 8px;
-    border-radius: 6px;
-
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-.nomeCategoria:hover {
+.btnCategoria:hover {
     background-color: #243653;
     color: #72a7ff;
 }
 
-.selecionada {
-    background-color: #243653;
-    color: #72a7ff;
-}
-
-/* Área dos flashcards */
-
-.areaCards {
+.subcategorias {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 5px;
+    margin-left: 15px;
+    border-left: 1px solid #293b58;
+    padding-left: 8px;
 }
 
-.areaCards h2 {
-    color: #72a7ff;
-    font-size: 1.8rem;
-    margin: 0;
-}
+/* Formulários */
 
-.mensagemInicial {
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
     background-color: #182338;
     border: 1px solid #293b58;
-    border-radius: 15px;
-    padding: 30px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
-.mensagemInicial p {
-    color: #b8c7dc;
-}
-
-/* Cards */
-
-.card {
-    background-color: #182338;
-    border: 1px solid #293b58;
-    border-radius: 15px;
-
-    padding: 25px;
-}
-
-.card h3 {
+.formulario h2 {
     color: #72a7ff;
-    font-size: 1.1rem;
+    margin: 0 0 8px;
 }
 
-.card p {
-    color: #eaf1ff;
-    line-height: 1.6;
-}
-
-.resposta {
-    border-top: 1px solid #293b58;
-    margin-top: 20px;
-    padding-top: 10px;
-}
-
-.botaoResposta {
-    background-color: #315b91;
+.formulario input,
+.formulario select,
+.formulario textarea {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #293b58;
+    border-radius: 8px;
+    background-color: #243653;
     color: #ffffff;
+    font-size: 1rem;
+}
 
+.formulario textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+    outline: 1px solid #72a7ff;
+}
+
+.formulario button {
+    padding: 10px 15px;
     border: none;
     border-radius: 8px;
-
-    padding: 10px 18px;
-    margin-top: 15px;
-
+    background-color: #315b91;
+    color: #ffffff;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
-.botaoResposta:hover {
+.formulario button:hover {
     background-color: #4779b8;
 }
+
+.formulario button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Flashcards */
+
+.gradeCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 200px;
+    padding: 25px;
+    background-color: #182338;
+    border: 1px solid #293b58;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: #72a7ff;
+}
+
+.revelado {
+    background-color: #1d304b;
+    border-color: #4779b8;
+}
+
+.cardTitulo {
+    color: #72a7ff;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.cardConteudo {
+    color: #eaf1ff;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.cardRodape {
+    color: #8da5c5;
+    font-size: 0.85rem;
+}
+
+.contador {
+    color: #b8c7dc;
+    margin: 0;
+}
+
+/* Mensagens */
 
 .erro {
     color: #ff7777;
 }
 
+.home p {
+    line-height: 1.5;
+}
+
+.btnCategoria {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    color: #eaf1ff;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.quantidadeCards {
+    color: #8da5c5;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
 /* Responsividade */
 
 @media (max-width: 750px) {
     .home {
-        grid-template-columns: 1fr;
         padding: 20px;
     }
-}
 
-.formularioCategoria {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #182338;
-    border: 1px solid #293b58;
-    border-radius: 12px;
-}
+    .cabecalho {
+        align-items: flex-start;
+    }
 
-.formularioCategoria h2 {
-    color: #72a7ff;
-}
+    .cabecalho h1 {
+        width: 100%;
+        flex-basis: 100%;
+    }
 
-.formularioCategoria label {
-    color: #fff;
-}
-
-.formularioCategoria input,
-.formularioCategoria select {
-    padding: 10px;
-    border: 1px solid #293b58;
-    border-radius: 8px;
-    background-color: #243653;
-    color: white;
-}
-
-.botoesFormulario {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-}
-
-.botoesFormulario button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    .gradeCards {
+        grid-template-columns: 1fr;
+    }
 }

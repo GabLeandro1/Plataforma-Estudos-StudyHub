@@ -50,24 +50,25 @@ module.exports = class CardControl {
 
     async readByIdAluno(req, res) {
         try {
-            const card = new Card();
-            card.id_aluno = req.params.id_aluno;
+            const categoria = new Categoria();
 
-            const dados = await card.readByIDAluno();
+            categoria.id_aluno = req.params.id_aluno;
+
+            const dados = await categoria.readByIdAluno();
 
             return res.status(200).json({
                 cod: 1,
                 status: true,
-                card: dados
+                categoria: dados
             });
 
         } catch (err) {
-            console.error('Erro ao buscar cards do aluno:', err);
+            console.error(err);
 
             return res.status(500).json({
-                cod: 99,
+                cod: 0,
                 status: false,
-                msg: 'Erro ao buscar cards do aluno.'
+                mensagem: 'Erro ao buscar categorias.'
             });
         }
     }
@@ -96,11 +97,37 @@ module.exports = class CardControl {
         }
     }
 
+    async readByIdAlunoCategoria(req, res) {
+        try {
+            const card = new Card();
+
+            card.id_aluno = req.params.id_aluno;
+            card.id_categoria = req.params.id_categoria;
+
+            const dados = await card.readByIdAlunoCategoria();
+
+            return res.status(200).json({
+                cod: 1,
+                status: true,
+                card: dados
+            });
+
+        } catch (err) {
+            console.error('Erro ao buscar cards do aluno e categoria:', err);
+
+            return res.status(500).json({
+                cod: 99,
+                status: false,
+                msg: 'Erro ao buscar cards.'
+            });
+        }
+    }
+
     async create(req, res) {
         try {
             const data = new Date();
 
-            const { id_aluno, id_categoria, pergunta, resposta } = req.body.card;
+            const { id_aluno, id_categoria, pergunta, resposta } = req.body;
 
             const card = new Card();
 

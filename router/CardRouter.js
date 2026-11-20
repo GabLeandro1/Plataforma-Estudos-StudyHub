@@ -56,6 +56,12 @@ module.exports = class CardRouter {
             this.cardControl.delete.bind(this.cardControl)
         );
 
+        this.router.get(
+            '/id_aluno/:id_aluno/id_categoria/:id_categoria',
+            this.jwtMiddleware.validate,
+            this.cardControl.readByIdAlunoCategoria.bind(this.cardControl)
+        );
+        
         return this.router;
     }
 };

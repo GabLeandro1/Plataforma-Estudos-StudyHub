@@ -38,7 +38,7 @@ class Card {
         pergunta,
         resposta,
         data_criacao
-      ) VALUES (?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?)
     `;
 
     try {
@@ -80,6 +80,25 @@ class Card {
       console.error('Erro ao buscar card por ID:', error);
       return null;
     }
+  }
+
+  async readByIdAlunoCategoria() {
+    const con = await Banco.getConexao();
+
+    try {
+        const [rows] = await con.execute(
+            `SELECT *
+             FROM cards
+             WHERE id_aluno = ?
+             AND id_categoria = ?`,
+            [this.id_aluno, this.id_categoria]
+        );
+
+        return rows;
+
+      } catch (err) {
+          throw err;
+      }
   }
 
   async readByIdAluno() {

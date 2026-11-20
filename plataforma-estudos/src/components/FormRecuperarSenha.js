@@ -11,9 +11,8 @@ function FormRecuperarSenha() {
     const recuperarSenha = async (e) => {
         e.preventDefault();
         setErro("");
-
         try {
-            const resposta = await requisicaoComToken("http://localhost:3000/alunos/", {
+            const resposta = await requisicaoComToken("http://localhost:3000/alunos/recuperar-senha", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: 'include',

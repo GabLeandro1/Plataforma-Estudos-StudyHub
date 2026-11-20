@@ -1,4 +1,3 @@
-
 const Aluno = require('../model/Aluno');
 const MeuTokenJWT = require('../model/MeuTokenJWT');
 
@@ -95,6 +94,44 @@ class AlunoControl {
             return res.status(500).json({
                 status: false,
                 msg: 'Erro interno ao renovar token.'
+            });
+        }
+    }
+
+    async recuperar_senha(req, res) {
+        try {
+            const { email } = req.body;
+
+            if (!email) {
+                return res.status(400).json({
+                    status: false,
+                    msg: 'Informe um endereço de e-mail.'
+                });
+            }
+
+            const aluno = new Aluno();
+            aluno.email = email;
+
+            const encontrado = await aluno.recuperarSenha();
+
+            if (!encontrado) {
+                return res.status(200).json({
+                    status: true,
+                    msg: 'Se o e-mail estiver cadastrado, você receberá as instruções de recuperação.'
+                });
+            }
+
+            return res.status(200).json({
+                status: true,
+                msg: 'Solicitação de recuperação recebida.'
+            });
+
+        } catch (err) {
+            console.error('Erro ao recuperar senha:', err);
+
+            return res.status(500).json({
+                status: false,
+                msg: 'Erro interno ao solicitar recuperação de senha.'
             });
         }
     }

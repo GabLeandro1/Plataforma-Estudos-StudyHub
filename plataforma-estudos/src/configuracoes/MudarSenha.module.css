@@ -58,11 +58,12 @@
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.3s ease;
 }
 
 .botaoSalvar:hover:not(:disabled) {
     background-color: #1d4ed8;
+    transform: translateY(-3px) scale(1.04);
 }
 
 .botaoSalvar:disabled {
@@ -80,23 +81,4 @@
     margin: 0;
     color: #16a34a;
     font-size: 14px;
-}
-
-/* Modo escuro */
-:global(.dark) .titulo {
-    color: #ffffff;
-}
-
-:global(.dark) .label {
-    color: #d1d5db;
-}
-
-:global(.dark) .input {
-    border-color: #4b5563;
-    background-color: #1f2937;
-    color: #ffffff;
-}
-
-:global(.dark) .input:focus {
-    border-color: #3b82f6;
 }
