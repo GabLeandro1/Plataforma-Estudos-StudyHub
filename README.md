@@ -148,6 +148,7 @@ As tecnologias utilizadas no desenvolvimento do StudyHub estão divididas entre 
 | Express | Criação e gerenciamento das rotas da API |
 | MySQL | Armazenamento e gerenciamento dos dados |
 | MySQL2 | Comunicação com o banco de dados |
+| XAMPP | Ambiente de desenvolvimento local para gerenciamento do MySQL e Apache |
 | JSON Web Token (JWT) | Autenticação e validação de acesso |
 | Multer | Recebimento e gerenciamento de arquivos enviados |
 
@@ -212,6 +213,8 @@ O projeto utiliza MySQL para armazenar e gerenciar as informações da plataform
 
 A comunicação com o banco de dados é realizada pelo Backend por meio da biblioteca MySQL2.
 
+Para o ambiente de desenvolvimento local, é utilizado o XAMPP, que disponibiliza ferramentas para gerenciamento do serviço de banco de dados e do servidor Apache.
+
 ### 🔄 Comunicação entre as Camadas
 
 A comunicação ocorre por meio de requisições HTTP entre o Frontend e a API desenvolvida no Backend.
@@ -236,7 +239,7 @@ O fluxo de comunicação acontece da seguinte maneira:
 Antes de executar o projeto, é necessário possuir as seguintes ferramentas instaladas:
 
 - [Node.js](https://nodejs.org/)
-- [MySQL](https://www.mysql.com/)
+- [XAMPP](https://www.apachefriends.org/)
 - [Git](https://git-scm.com/)
 
 ### 1. Clonar o repositório
@@ -253,11 +256,18 @@ cd meu-projeto
 
 ### 2. Configurar o Banco de Dados
 
-Certifique-se de que o servidor MySQL esteja em execução.
+Certifique-se de que o XAMPP esteja instalado e configurado.
 
-Crie o banco de dados e configure as credenciais de conexão utilizadas pelo Backend.
+1. Abra o painel de controle do XAMPP.
+2. Inicie os módulos MySQL e Apache.
+3. Acesse o phpMyAdmin pelo endereço:
 
-As informações de conexão devem corresponder às configurações definidas no projeto.
+```text
+http://localhost/phpmyadmin
+```
+
+4. Crie o banco de dados utilizado pelo StudyHub.
+5. Configure as credenciais de conexão no Backend, de acordo com as configurações definidas no projeto.
 
 ### 3. Configurar o Backend
 
