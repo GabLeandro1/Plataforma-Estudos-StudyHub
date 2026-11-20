@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 550px;
+    padding: 24px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.titulo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.inputArquivo {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.inputArquivo:hover {
+    border-color: #9ca3af;
+}
+
+.inputArquivo:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.preview {
+    width: 128px;
+    height: 128px;
+    margin-top: 8px;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.mensagem {
+    font-size: 14px;
+    color: #16a34a;
+}
+
+.botao {
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px 16px;
+    color: white;
+    font-weight: 500;
+    background-color: #16a34a;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.3s ease;
+}
+
+.botao:hover {
+    background-color: #15803d;    
+    transform: translateY(-3px) scale(1.04);
+}
+
+.botao:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Modo escuro */
+:global(body.dark) .titulo {
+    color: white;
+}
+
+:global(body.dark) .label {
+    color: #d1d5db;
+}
+
+:global(body.dark) .inputArquivo {
+    color: #d1d5db;
+    background-color: #374151;
+    border-color: #4b5563;
+}
+
+:global(body.dark) .inputArquivo:hover {
+    border-color: #6b7280;
+}
+
+:global(body.dark) .preview {
+    border-color: #4b5563;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 16px;
+    }
+
+    .preview {
+        width: 110px;
+        height: 110px;
+    }
+}

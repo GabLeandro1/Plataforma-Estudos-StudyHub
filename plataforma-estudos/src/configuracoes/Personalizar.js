@@ -1,127 +1,140 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
+import styles from './Personalizar.module.css';
 import { requisicaoComToken } from '../services/api';
+import ImagemPerfil from "../layout/ImagemPerfil";
 
 function Personalizar() {
-  const [senhaAtual, setSenhaAtual] = useState("");
-  const [novaSenha, setNovaSenha] = useState("");
-  const [confirmarSenha, setConfirmarSenha] = useState("");
-  const [erro, setErro] = useState("");
-  const [sucesso, setSucesso] = useState("");
-  const [carregando, setCarregando] = useState(false);
+    const [mensagem, setMensagem] = useState("");
+    const [idAluno, setIdAluno] = useState(null);
+    const [imagemPerfil, setImagemPerfil] = useState(null);
+    const [previewImagem, setPreviewImagem] = useState(null);
+    const [imagemAtual, setImagemAtual] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErro("");
-    setSucesso("");
+    useEffect(() => {
+        const dados = JSON.parse(localStorage.getItem("dados") || "{}");
 
-    if (novaSenha !== confirmarSenha) {
-      return setErro("As senhas não coincidem.");
+        setIdAluno(dados.id_aluno);
+
+        if (dados.imagem_perfil) {
+            setImagemAtual(dados.imagem_perfil);
+        }
+    }, []);
+
+    function handleImagemChange(event) {
+        const arquivo = event.target.files[0];
+
+        if (!arquivo) return;
+
+        if (!["image/jpeg", "image/png", "image/webp"].includes(arquivo.type)) {
+            setMensagem("Formato de imagem não permitido.");
+            return;
+        }
+
+        if (arquivo.size > 5 * 1024 * 1024) {
+            setMensagem("A imagem deve ter no máximo 5 MB.");
+            return;
+        }
+
+        setImagemPerfil(arquivo);
+
+        const preview = URL.createObjectURL(arquivo);
+        setPreviewImagem(preview);
+
+        setMensagem("");
     }
 
-    if (novaSenha.length < 6) {
-      return setErro("A nova senha deve ter pelo menos 6 caracteres.");
+    async function handleSalvar() {
+        setMensagem("");
+
+        const token = localStorage.getItem("token");
+
+        if (!token || !idAluno) {
+            setMensagem("Sessão expirada. Faça login novamente.");
+            return;
+        }
+
+        if (!imagemPerfil) {
+            setMensagem("Selecione uma imagem primeiro.");
+            return;
+        }
+
+        try {
+            const formulario = new FormData();
+            formulario.append("imagem", imagemPerfil);
+
+            const resposta = await requisicaoComToken(
+                `/alunos/${idAluno}/imagem`,
+                {
+                    method: "PUT",
+                    body: formulario
+                }
+            );
+
+            const json = await resposta.json();
+
+            if (!resposta.ok || !json.status) {
+                setMensagem(json.msg || "Erro ao atualizar imagem.");
+                return;
+            }
+
+            setImagemAtual(previewImagem);
+
+            window.dispatchEvent(
+                new CustomEvent('atualizarImagemPerfil', {
+                    detail: previewImagem
+                })
+            );
+
+            setImagemPerfil(null);
+            setPreviewImagem(null);
+
+            setMensagem("Imagem atualizada com sucesso!");
+
+        } catch (error) {
+            console.error("Erro ao atualizar imagem:", error);
+            setMensagem("Erro ao se comunicar com o servidor.");
+        }
     }
 
-    const token = localStorage.getItem("token");
-    const dados = JSON.parse(localStorage.getItem("dados"));
-    const matricula = dados?.Matricula;
+    return (
+        <div className={styles.container}>
+            <h2 className={styles.titulo}>
+                Personalizar
+            </h2>
 
-    if (!token || !matricula) {
-      return setErro("Sessão expirada. Faça login novamente.");
-    }
+            <div className={styles.campo}>
+                <label className={styles.label}>
+                    Mudar foto de perfil
+                </label>
 
-    try {
-      setCarregando(true);
-      const resposta = await fetch(`http://localhost:3000/alunos/${matricula}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        credentials: 'include',
-        body: JSON.stringify({ senhaAtual, novaSenha }),
-      });
+                <input
+                    type="file"
+                    accept="image/png, image/jpeg, image/webp"
+                    onChange={handleImagemChange}
+                    className={styles.inputArquivo}
+                />
 
-      const json = await resposta.json();
+                <ImagemPerfil
+                    imagemPerfil={previewImagem || imagemAtual}
+                    className={styles.preview}
+                />
+            </div>
 
-      if (json.status) {
-        setSucesso("Senha atualizada com sucesso!");
-        setSenhaAtual("");
-        setNovaSenha("");
-        setConfirmarSenha("");
-      } else {
-        setErro(json.msg || "Erro ao atualizar senha.");
-      }
-    } catch (err) {
-      console.error(err);
-      setErro("Erro ao se comunicar com o servidor.");
-    } finally {
-      setCarregando(false);
-    }
-  };
+            {mensagem && (
+                <p className={styles.mensagem}>
+                    {mensagem}
+                </p>
+            )}
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4 p-6">
-      <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
-        Mudar Senha
-      </h2>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          Senha atual
-        </label>
-        <input
-          type="password"
-          value={senhaAtual}
-          onChange={(e) => setSenhaAtual(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md 
-                     bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          Nova senha
-        </label>
-        <input
-          type="password"
-          value={novaSenha}
-          onChange={(e) => setNovaSenha(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md 
-                     bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          Confirmar nova senha
-        </label>
-        <input
-          type="password"
-          value={confirmarSenha}
-          onChange={(e) => setConfirmarSenha(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md 
-                     bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-      </div>
-
-      {erro && <p className="text-red-500">{erro}</p>}
-      {sucesso && <p className="text-green-500">{sucesso}</p>}
-
-      <button
-        type="submit"
-        disabled={carregando}
-        className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition"
-      >
-        {carregando ? "Salvando..." : "Salvar nova senha"}
-      </button>
-    </form>
-  );
+            <button
+                onClick={handleSalvar}
+                className={styles.botao}
+            >
+                Salvar imagem
+            </button>
+        </div>
+    );
 }
 
 export default Personalizar;

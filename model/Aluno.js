@@ -100,6 +100,26 @@ class Aluno {
     }
   }
 
+  async updateImagem(imagem) {
+    const con = await Banco.getConexao();
+    const sql = `
+        UPDATE alunos
+        SET imagem_perfil = ?
+        WHERE id_aluno = ?
+    `;
+    try {
+      const [res] = await con.execute(sql, [
+          imagem,
+          this._id_aluno
+      ]);
+
+      return res.affectedRows > 0;
+    } catch (err) {
+      console.error("Erro ao atualizar imagem:", err);
+      return false;
+    }
+  }
+
   async delete() {
     const con = await Banco.getConexao();
     try {

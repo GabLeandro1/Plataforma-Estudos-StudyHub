@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 function MenuCronometroAluno() {
     const navigate = useNavigate();
-
+    const dados =  JSON.parse(localStorage.getItem("dados"));
+    const nomeUsuario = dados?.nome || "estudante";
     return (
         <section className={styles.menu_container}>
             <div className={styles.menu_conteudo}>
                 <h1>
-                    Seja bem-vindo(a) ao <span>StudyHub!</span>
+                    Olá {nomeUsuario}! Seja bem-vindo(a) ao <span>StudyHub!</span>
                 </h1>
 
                 <p className={styles.subtitulo}>

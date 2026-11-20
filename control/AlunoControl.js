@@ -184,9 +184,9 @@ class AlunoControl {
                 });
             }
 
-            if (dados.Imagem_Perfil_Aluno) {
-                dados.Imagem_Perfil_Aluno =
-                    dados.Imagem_Perfil_Aluno.toString('base64');
+            if (dados.imagem_perfil) {
+                dados.imagem_perfil =
+                    dados.imagem_perfil.toString('base64');
             }
 
             return res.status(200).json({
@@ -290,6 +290,49 @@ class AlunoControl {
             return res.status(500).json({
                 status: false,
                 msg: 'Erro interno ao atualizar aluno.'
+            });
+        }
+    }
+
+    async atualizarImagem(req, res) {
+        try {
+            if (!req.file) {
+                return res.status(400).json({
+                    status: false,
+                    msg: 'Nenhuma imagem foi enviada.'
+                });
+            }
+
+            const aluno = new Aluno();
+
+            aluno.id_aluno = req.params.id_aluno;
+
+            const dados = await aluno.readByID();
+
+            if (!dados) {
+                return res.status(404).json({
+                    status: false,
+                    msg: 'Aluno não encontrado.'
+                });
+            }
+
+            const atualizado = await aluno.updateImagem(
+                req.file.buffer
+            );
+
+            return res.status(200).json({
+                status: atualizado,
+                msg: atualizado
+                    ? 'Imagem atualizada com sucesso.'
+                    : 'Erro ao atualizar imagem.'
+            });
+
+        } catch (err) {
+            console.error('Erro ao atualizar imagem:', err);
+
+            return res.status(500).json({
+                status: false,
+                msg: 'Erro interno ao atualizar imagem.'
             });
         }
     }

@@ -39,3 +39,32 @@
 .img:hover {
     transform: translateY(-7px) scale(1.04);
 }
+
+.perfil {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 20px;
+}
+
+.imagemPerfil {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    flex-shrink: 0;
+}
+
+.infoUsuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+}
+
+.nomeUsuario {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cor-texto);
+}

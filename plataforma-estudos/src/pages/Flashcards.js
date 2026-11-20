@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import styles from './Flashcards.module.css';
 import { requisicaoComToken } from '../services/api';
+import ButtonGoBack from '../layout/ButtonGoBack'
 
 function Flashcards() {
     // Estados do formulário
@@ -383,13 +384,10 @@ function Flashcards() {
             ) : (
                 <>
                     <header className={styles.cabecalho}>
-                        <button
-                            type="button"
-                            onClick={voltarCategorias}
+                        <ButtonGoBack
                             className={styles.btnVoltar}
-                        >
-                            ← Voltar
-                        </button>
+                            onClick={voltarCategorias}
+                        />
 
                         <h1>{categoriaSelecionada.nome}</h1>
                         <button

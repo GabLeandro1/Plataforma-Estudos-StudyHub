@@ -2,6 +2,7 @@
 const express = require('express');
 const AlunoControl = require('../control/AlunoControl');
 const JWTMiddleware = require('../middleware/JWTMiddleware');
+const uploadImagem = require('../middleware/uploadImagem');
 
 module.exports = class AlunoRouter {
     constructor() {
@@ -38,6 +39,10 @@ module.exports = class AlunoRouter {
         this._router.put('/:id_aluno', this._jwt.validate, (req, res) =>
             this._ctrl.update(req, res)
         );
+
+        this._router.put('/:id_aluno/imagem', this._jwt.validate, uploadImagem.single('imagem'), (req, res) =>
+            this._ctrl.atualizarImagem(req, res)
+        ); 
 
         this._router.delete('/:id_aluno', this._jwt.validate, (req, res) =>
             this._ctrl.delete(req, res)
