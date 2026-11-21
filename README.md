@@ -1,18 +1,18 @@
 # 📚 StudyHub — Plataforma de Estudos
 
 <p align="center">
-  Plataforma desenvolvida para auxiliar estudantes na organização da rotina de estudos, no gerenciamento de conteúdos e na melhoria do aprendizado por meio de ferramentas interativas.
+  Plataforma desenvolvida para auxiliar estudantes na organização da rotina de estudos, no gerenciamento de conteúdos e no acompanhamento do desempenho acadêmico por meio de ferramentas interativas.
 </p>
 
 ---
 
 ## 📌 Sobre o Projeto
 
-O **StudyHub** é uma plataforma de estudos desenvolvida com o objetivo de centralizar ferramentas e recursos que auxiliam os estudantes em sua rotina acadêmica.
+O **StudyHub** é uma plataforma de estudos desenvolvida com o objetivo de centralizar ferramentas e recursos que auxiliam estudantes na organização da rotina acadêmica e no acompanhamento de seu progresso.
 
-A aplicação oferece funcionalidades que permitem organizar os estudos, acompanhar o tempo dedicado às atividades e utilizar recursos interativos que contribuem para a produtividade e a aprendizagem.
+A aplicação reúne funcionalidades de gerenciamento de tempo, organização de conteúdos, acompanhamento de sessões de estudo e recursos interativos, proporcionando um ambiente que incentiva a produtividade e a consistência nos estudos.
 
-O projeto possui uma arquitetura dividida entre Frontend e Backend, permitindo a separação das responsabilidades, facilitando a manutenção do código e possibilitando a evolução independente de cada camada.
+O projeto possui uma arquitetura dividida entre Frontend e Backend, com comunicação por meio de uma API, permitindo a separação das responsabilidades, facilitando a manutenção e possibilitando a evolução independente de cada camada.
 
 ---
 
@@ -43,7 +43,7 @@ A seguir, estão algumas capturas de tela das funcionalidades e páginas desenvo
 ### 🏠 Página Inicial
 
 <p align="center">
-  <img width="1841" alt="Página inicial do StudyHub" src="https://github.com/user-attachments/assets/52477327-3c05-4487-821a-82dfd2141c5b" />
+  <img width="1841" height="1025" alt="Página inicial" src="https://github.com/user-attachments/assets/19565323-dd6a-412d-af1c-98c9d59f57c4" />
 </p>
 
 ### ⏱️ Ferramentas de Estudo
@@ -51,19 +51,19 @@ A seguir, estão algumas capturas de tela das funcionalidades e páginas desenvo
 **Cronômetro do método Pomodoro**
 
 <p align="center">
-  <img width="1839" alt="Cronômetro Pomodoro" src="https://github.com/user-attachments/assets/c70adb2b-016b-476b-9d39-12f00e88b513" />
+  <img width="1841" height="1025" alt="Cronômetro Pomodoro" src="https://github.com/user-attachments/assets/7bb05116-f9fc-4438-8359-93a3877217c9" />
 </p>
 
 **Cronômetro regressivo**
 
 <p align="center">
-  <img width="1841" alt="Cronômetro regressivo" src="https://github.com/user-attachments/assets/2f11f15e-4c08-4d2a-8088-55e39511efbf" />
+  <img width="1841" height="1025" alt="Cronômetro regressivo" src="https://github.com/user-attachments/assets/bf66564d-1153-425d-8594-0889fab34764" />
 </p>
 
 **Cronômetro progressivo**
 
 <p align="center">
-  <img width="1841" alt="Cronômetro progressivo" src="https://github.com/user-attachments/assets/408bc246-edc5-4662-9db0-b301296becf8" />
+  <img width="1841" height="1025" alt="Cronômetro progressivo" src="https://github.com/user-attachments/assets/ae6d4a58-a781-49a7-9bb8-0f9c7aa1330b" />
 </p>
 
 ### 📚 Organização dos Estudos
@@ -71,13 +71,19 @@ A seguir, estão algumas capturas de tela das funcionalidades e páginas desenvo
 **Histórico de estudos**
 
 <p align="center">
-  <img width="1841" alt="Histórico de estudos" src="https://github.com/user-attachments/assets/61278867-7d4c-484d-aaee-1ee19567503b" />
+  <img width="1841" height="1025" alt="Histórico de estudos" src="https://github.com/user-attachments/assets/2468ff36-7c51-4e7c-bfb8-75bd6b8dd0f1" />
 </p>
 
 **Flashcards**
 
 <p align="center">
-  <img width="1841" alt="Página de flashcards" src="https://github.com/user-attachments/assets/d55ded59-4b1d-47e9-81b8-f49259cbfa66" />
+  <img width="1841" height="1025" alt="Flashcards" src="https://github.com/user-attachments/assets/82d824c0-efd8-41a5-a120-d788c4ae90d2" />
+</p>
+
+**Ranking de estudos**
+
+<p align="center">
+  <img width="1841" height="1025" alt="Ranking de estudos" src="https://github.com/user-attachments/assets/205ef564-5ce5-41c2-9485-f4692fec57df" />
 </p>
 
 ### ⚙️ Personalização
@@ -85,23 +91,13 @@ A seguir, estão algumas capturas de tela das funcionalidades e páginas desenvo
 **Redefinição de senha**
 
 <p align="center">
-  <img width="1841" alt="Página de redefinição de senha" src="https://github.com/user-attachments/assets/e303fe2b-3b3c-4d14-93a0-2fa5635e4a33" />
+  <img width="1841" height="1025" alt="Redefinição de senha" src="https://github.com/user-attachments/assets/f4181c01-d3d5-4dc4-8b55-63b963a7a371" />
 </p>
 
 **Personalização da foto de perfil**
 
 <p align="center">
-  <img width="1841" alt="Personalização da foto de perfil" src="https://github.com/user-attachments/assets/98058efc-77c3-4416-a040-a2ae0cfbb61d" />
-</p>
-
----
-
-## 🗄️ Modelo do Banco de Dados
-
-O banco de dados do StudyHub foi estruturado para organizar e relacionar as informações utilizadas pelas funcionalidades da plataforma.
-
-<p align="center">
-  <img width="848" alt="Modelo do banco de dados do StudyHub" src="https://github.com/user-attachments/assets/9155c317-cae1-4e77-adda-5e411bdba7bc" />
+  <img width="1841" height="1025" alt="Personalização da foto de perfil" src="https://github.com/user-attachments/assets/6d93d6dc-375b-469d-bc4b-a792e0877051" />
 </p>
 
 ---
@@ -112,17 +108,38 @@ O banco de dados do StudyHub foi estruturado para organizar e relacionar as info
 
 - **Login:** autenticação de usuários e gerenciamento de acesso por meio de tokens JWT.
 - **Cadastro:** registro de alunos na plataforma.
-- **Recuperação de senha:** envio de mensagem por e-mail para recuperação do acesso.
+- **Recuperação de senha:** envio de e-mail para recuperação do acesso.
 - **Redefinição de senha:** alteração da senha da conta.
 - **Personalização:** atualização da imagem de perfil.
 
-### 📖 Ferramentas de Estudo
+### ⏱️ Ferramentas de Estudo
 
-- **Pomodoro:** temporizador para organização dos períodos de estudo e descanso.
-- **Cronômetro regressivo:** contagem de tempo até um período determinado.
-- **Cronômetro progressivo:** acompanhamento do tempo decorrido.
-- **Flashcards:** criação e organização de cartões de perguntas e respostas em categorias.
-- **Histórico:** consulta de informações relacionadas à utilização das ferramentas de estudo.
+- **Pomodoro:** temporizador baseado na técnica Pomodoro para organização dos períodos de estudo e descanso.
+- **Cronômetro regressivo:** contagem de tempo a partir de uma duração definida.
+- **Cronômetro progressivo:** acompanhamento do tempo decorrido durante uma atividade.
+
+### 📚 Organização e Acompanhamento
+
+- **Flashcards:** criação de cartões de perguntas e respostas, organizados por categorias, para auxiliar na revisão e fixação de conteúdos.
+- **Histórico de estudos:** consulta aos registros das sessões de estudo realizadas na plataforma.
+- **Ranking:** classificação dos alunos de acordo com o tempo total de estudo acumulado, permitindo acompanhar o desempenho e incentivar a dedicação à rotina de estudos.
+
+---
+
+## 🏆 Ranking
+
+O Ranking é uma funcionalidade que permite visualizar e comparar o tempo total de estudo registrado pelos alunos na plataforma.
+
+A classificação é construída a partir das sessões de estudo armazenadas no banco de dados, somando os tempos registrados para cada aluno e organizando os resultados em ordem decrescente.
+
+O sistema apresenta:
+
+- Classificação dos alunos de acordo com o tempo acumulado de estudo.
+- Identificação das posições no ranking.
+- Destaque visual para os três primeiros colocados.
+- Exibição do tempo total de estudo convertido em horas e minutos.
+
+A funcionalidade utiliza os registros de sessões de estudo para calcular o desempenho acumulado de cada aluno, atualizando a classificação conforme os dados disponíveis.
 
 ---
 
@@ -161,27 +178,27 @@ O StudyHub utiliza uma arquitetura dividida entre **Frontend e Backend**, com o 
 ### 📁 Estrutura de Diretórios
 
 ```text
-meu-projeto/                         # Raiz do projeto
+meu-projeto/
 │
-├── view/                            # Frontend da aplicação
-│   └── plataforma-estudos/          # Projeto desenvolvido em React
-│       ├── public/                  # Arquivos públicos e recursos estáticos
-│       ├── src/                     # Código-fonte do Frontend
-│       │   ├── components/          # Componentes reutilizáveis
-│       │   ├── configuracoes/       # Componentes de configuração
-│       │   ├── img/                 # Imagens utilizadas na aplicação
-│       │   ├── layout/              # Elementos estruturais da interface
-│       │   ├── pages/               # Páginas da aplicação
-│       │   └── services/            # Serviços e comunicação com a API
-│       ├── App.css                  # Estilos do componente principal
-│       └── App.js                   # Componente principal do React
+├── view/                              # Frontend
+│   └── plataforma-estudos/
+│       ├── public/
+│       ├── src/
+│       │   ├── components/             # Componentes reutilizáveis
+│       │   ├── configuracoes/          # Configurações
+│       │   ├── img/                   # Imagens
+│       │   ├── layout/                # Elementos estruturais
+│       │   ├── pages/                  # Páginas da aplicação
+│       │   └── services/               # Comunicação com a API
+│       ├── App.css
+│       └── App.js
 │
-├── control/                         # Controllers: processamento das requisições
-├── model/                           # Models: operações e acesso aos dados
-├── router/                          # Definição das rotas da API
-├── middleware/                      # Validações e autenticação
+├── control/                            # Controllers
+├── model/                               # Models e acesso aos dados
+├── router/                               # Rotas da API
+├── middleware/                            # Middlewares e validações
 │
-└── app.js                           # Inicialização e configuração do servidor
+└── app.js                                # Inicialização do servidor
 ```
 
 ### 💻 Frontend
@@ -194,7 +211,7 @@ Suas principais responsabilidades são:
 - Gerenciamento dos estados da aplicação.
 - Navegação entre as funcionalidades.
 - Comunicação com o Backend por meio de requisições HTTP.
-- Apresentação dos dados recebidos da API.
+- Apresentação e atualização dos dados recebidos da API.
 
 ### ⚙️ Backend
 
@@ -209,7 +226,7 @@ Sua organização é dividida em:
 
 ### 🗄️ Banco de Dados
 
-O projeto utiliza MySQL para armazenar e gerenciar as informações da plataforma, incluindo dados relacionados aos alunos, professores, disciplinas, turmas e recursos de estudo.
+O projeto utiliza MySQL para armazenar e gerenciar as informações da plataforma, incluindo dados dos alunos, sessões de estudo e conteúdos organizados pelos usuários.
 
 A comunicação com o banco de dados é realizada pelo Backend por meio da biblioteca MySQL2.
 
@@ -229,6 +246,16 @@ O fluxo de comunicação acontece da seguinte maneira:
 6. O model realiza as operações necessárias no banco de dados.
 7. O Backend retorna uma resposta, geralmente em formato JSON.
 8. O Frontend recebe os dados e atualiza a interface.
+
+---
+
+## 🗄️ Modelo do Banco de Dados
+
+O banco de dados do StudyHub foi estruturado para organizar e relacionar as informações utilizadas pelas funcionalidades da plataforma.
+
+<p align="center">
+  <img width="848" alt="Modelo do banco de dados do StudyHub" src="https://github.com/user-attachments/assets/9155c317-cae1-4e77-adda-5e411bdba7bc" />
+</p>
 
 ---
 
@@ -256,18 +283,17 @@ cd meu-projeto
 
 ### 2. Configurar o Banco de Dados
 
-Certifique-se de que o XAMPP esteja instalado e configurado.
-
 1. Abra o painel de controle do XAMPP.
 2. Inicie os módulos MySQL e Apache.
-3. Acesse o phpMyAdmin pelo endereço:
+3. Acesse o phpMyAdmin:
 
 ```text
 http://localhost/phpmyadmin
 ```
 
 4. Crie o banco de dados utilizado pelo StudyHub.
-5. Configure as credenciais de conexão no Backend, de acordo com as configurações definidas no projeto.
+5. Importe o script SQL do projeto, caso disponível.
+6. Configure as credenciais de conexão no Backend de acordo com as configurações definidas no projeto.
 
 ### 3. Configurar o Backend
 
@@ -334,7 +360,9 @@ Entre eles:
 
 O StudyHub foi desenvolvido com o propósito de aplicar conhecimentos de desenvolvimento Web, integração entre sistemas, manipulação de dados e construção de interfaces interativas.
 
-Além de oferecer ferramentas de apoio aos estudos, o projeto representa uma oportunidade de aprofundar conhecimentos em tecnologias como React, Node.js, Express e MySQL, trabalhando com uma aplicação estruturada em diferentes camadas.
+O desenvolvimento da plataforma possibilitou trabalhar com diferentes tecnologias, estruturar uma aplicação Full Stack e integrar funcionalidades que envolvem autenticação, persistência de dados, gerenciamento de sessões e atualização dinâmica de interfaces.
+
+Além de oferecer ferramentas de apoio aos estudos, o projeto representa uma oportunidade de aprofundar conhecimentos em React, Node.js, Express e MySQL, trabalhando com uma aplicação estruturada em diferentes camadas.
 
 ---
 
